@@ -32,7 +32,7 @@ Those features include but not limited to: freshness, price, open hours, distanc
 	5. [Y/N] [List] Interaction with data visualization? List them. (filter, sort, set variables ...)
 
 
-**Content**
+**Content**  
 * README.txt  
 	* This file.
 * index.html
