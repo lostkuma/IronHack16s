@@ -1,5 +1,4 @@
-Find Your Veggies for Indiana v1.0.0 - 2016-03-26 
-
+**Find Your Veggies for Indiana** v1.0.0 - 2016-03-26  
 Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)
 
 This is a Web App to help people finding fresh and cheap vegetables for Indiana Area.
@@ -7,18 +6,13 @@ This is a Web App to help people finding fresh and cheap vegetables for Indiana 
 The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
 Those features include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.
 
+**Description**  
 3. Description of the datasets and function design
  * [name] [link] [data type] [data columns used] [data amount] Please provide a name+link+basicInfo to each dataset you have used.
  * [Y/N] Do you use the primary dataset ”online climate data” from data.gov? 
  * [Y/N] [List] Are all these datasets from data.gov? If not, where are they coming from (links)?
 
-**Description**
-
-**Content**
- * README.txt  
-	This file.
-
- Fill in the structued description:
+  Fill in the structued description:
  * Map View:
 	1. [Y/N] Basic Map with specific location (your map is located in a meaningful place, city of west lafayette for example)
 	2. [Y/N] Markers for location of markets
@@ -36,6 +30,12 @@ Those features include but not limited to: freshness, price, open hours, distanc
 	3. [Y/N] [List] Any information input? List them. (comments, markers, user preference ...)
 	4. [Y/N] [List] Interaction with Map? List them. (filter on price will affect map markers, sort on price will affect map markers, ...)
 	5. [Y/N] [List] Interaction with data visualization? List them. (filter, sort, set variables ...)
+
+
+**Content**
+ * README.txt  
+	<\ts=2> This file.
+ * index.html
 
 5. Build Case
 How can we build and access your project on a Linux/Unix machine if you use external dependencies besides HTML/CSS/Javascript?
