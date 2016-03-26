@@ -33,15 +33,15 @@ Those features include but not limited to: freshness, price, open hours, distanc
 
 
 **Content**  
-* README.txt  
+README.txt  
 	* This file.
-* index.html
+index.html
 	* Web page for the App 
-* style.css
+style.css
 	* CSS style file with template from Bootstrap
-* js
+js
 	* A directory contains all the javescript files
-* image
+image
  	* A directory contains all images used in the website 
 
 5. Build Case
