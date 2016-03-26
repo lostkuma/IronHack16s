@@ -36,6 +36,7 @@ Those features include but not limited to: freshness, price, open hours, distanc
  * README.txt  
 	* This file.
  * index.html
+ 		kuma 
 
 5. Build Case
 How can we build and access your project on a Linux/Unix machine if you use external dependencies besides HTML/CSS/Javascript?
