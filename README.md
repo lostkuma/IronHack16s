@@ -31,14 +31,12 @@ Those features include but not limited to: freshness, price, open hours, distanc
 	4. [Y/N] [List] Interaction with Map? List them. (filter on price will affect map markers, sort on price will affect map markers, ...)
 	5. [Y/N] [List] Interaction with data visualization? List them. (filter, sort, set variables ...)
 
-
 **Content**
 * README.txt  --This file.  
 * index.html  --Web page for the App  
 * style.css  --CSS style file with template from Bootstrap  
 * js  --A directory contains all the javescript files  
-* image  --A directory contains all images used in the website
-  
+* image  --A directory contains all images used in the website  
   
 **5. Build Case**
 How can we build and access your project on a Linux/Unix machine if you use external dependencies besides HTML/CSS/Javascript?
