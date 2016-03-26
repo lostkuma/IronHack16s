@@ -34,7 +34,7 @@ Those features include but not limited to: freshness, price, open hours, distanc
 
 **Content**
  * README.txt  
-	<?ts=2> This file.
+ * 	This file.
  * index.html
 
 5. Build Case
