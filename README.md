@@ -2,7 +2,7 @@
 Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)
 
 
-This is a Web App to help people finding fresh and cheap vegetables for Indiana Area.
+This is a Web App to help people find fresh and cheap vegetables for Indiana Area.
 
 The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
 Those features include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.
@@ -40,13 +40,13 @@ Those features include but not limited to: freshness, price, open hours, distanc
 * image  --A directory contains all images used in the website  
   
 **5. Build Case**
-How can we build and access your project on a Linux/Unix machine if you use external dependencies besides HTML/CSS/Javascript?
-List the dependencies you used, such as python, node.js, etc.
-List the steps we should follow to build the project.
-Your project will be built on Amazon Web Service, EC2, ubuntu 14.01 instance
+At this point the project only uses html, css, and javascript. However, other dependencies might be used in the future. An updated readme file will then be submitted along with later submissions.
 
-6. Test Case
-Which browsers did you test your project on? Chrome, IE, Edge, Safari, or Firefox?
+**Test Case**
+This App will be tested on Chrome, Firefox and Safari
 
-7. Additional information You Want to Share with Us
+**Additional information You Want to Share with Us**
 E.g. any problems you faced/fixed, where you reached out to for help, etc.
+
+**Contact**
+For questions about this App please feel free to contact Xiaonan Jing (jing@purdue.edu)
