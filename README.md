@@ -45,8 +45,9 @@ At this point the project only uses HTML/CSS/Javascript. However, other dependen
 **Test Case**  
 The complete version of this App is exptected to be tested on the following broswers: Chrome, Firefox and Safari
 
-**Additional information You Want to Share with Us**  
+**Additional information**  
 My interests of study for my Master's program greatly related to Natural Language Processing. So if time allows, I would like to add some NLP stuff to the App as well. For example, information retrival from natural language text that users entered, and other things like text to speech feature using Google or IBM speech to text API. I've made an web app using text to speech API from IBM's Bluemix platform before but speech to text was a challenge, which remains a problem for me who did not have a solid programming background.  
+
 I will thank my boyfriend Jason Macnak, a former Purdue graduate and a software engineer at Google, for all the supports and additional help I got and will be getting on the project.  
 
 **Contact**  
