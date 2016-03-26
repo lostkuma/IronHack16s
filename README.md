@@ -1,4 +1,4 @@
-Fina Your Veggies for Indiana v1.0.0 -2016-3-26
+Fina Your Veggies for Indiana v1.0.0 -2016-3-26.
 Please visit GitHub for the complete code: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)
 
 This is a Web App to help people finding fresh and cheap vegetables for Indiana Area.
