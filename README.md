@@ -7,8 +7,9 @@ The App uses Google Map API combined with open datasets to display features for 
 Those features include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.  
 
 **Description**  
-* Datasets
-	* 
+* Datasets  
+dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.
+	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)
 	
 3. Description of the datasets and function design
  * [name] [link] [data type] [data columns used] [data amount] Please provide a name+link+basicInfo to each dataset you have used.
