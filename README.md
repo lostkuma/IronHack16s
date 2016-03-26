@@ -34,16 +34,11 @@ Those features include but not limited to: freshness, price, open hours, distanc
 
 **Content**  
 
-README.txt  
-* This file.  
-index.html  
-* Web page for the App  
-style.css  
-* CSS style file with template from Bootstrap.  
-js  
-* A directory contains all the javescript files.  
-image  
-* A directory contains all images used in the website.
+* README.txt  --This file.  
+* index.html  --Web page for the App  
+* style.css  --CSS style file with template from Bootstrap.  
+* js  --A directory contains all the javescript files.  
+* image  --A directory contains all images used in the website.
 
 5. Build Case
 How can we build and access your project on a Linux/Unix machine if you use external dependencies besides HTML/CSS/Javascript?
