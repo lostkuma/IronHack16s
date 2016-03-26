@@ -1,4 +1,4 @@
-Find Your Veggies for Indiana v1.0.0 - 2016-03-26 
+**Find Your Veggies for Indiana** v1.0.0 - 2016-03-26 
 
 Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)
 
