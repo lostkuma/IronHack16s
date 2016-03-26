@@ -32,21 +32,21 @@ Those features include but not limited to: freshness, price, open hours, distanc
 	4. [Y/N] [List] Interaction with Map? List them. (filter on price will affect map markers, sort on price will affect map markers, ...)
 	5. [Y/N] [List] Interaction with data visualization? List them. (filter, sort, set variables ...)
 
-**Content**
+**Content**  
 * README.txt  --This file.  
 * index.html  --Web page for the App  
 * style.css  --CSS style file with template from Bootstrap  
 * js  --A directory contains all the javescript files  
 * image  --A directory contains all images used in the website  
   
-**5. Build Case**
+**5. Build Case**  
 At this point the project only uses html, css, and javascript. However, other dependencies might be used in the future. An updated readme file will then be submitted along with later submissions.
 
-**Test Case**
+**Test Case**  
 This App will be tested on Chrome, Firefox and Safari
 
-**Additional information You Want to Share with Us**
+**Additional information You Want to Share with Us**  
 E.g. any problems you faced/fixed, where you reached out to for help, etc.
 
-**Contact**
+**Contact**  
 For questions about this App please feel free to contact Xiaonan Jing (jing@purdue.edu)
