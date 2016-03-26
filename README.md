@@ -15,7 +15,7 @@ Those features include but not limited to: freshness, price, open hours, distanc
 **Description**
 
 **Content**
- * README.txt
+ * README.txt \n
 	This file.
 
  Fill in the structued description:
