@@ -1,13 +1,15 @@
 **SmartVeggies for Indiana** v1.0.0 - 2016-03-26  
-Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)
+Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)  
 
-
-This is a Web App to help people find fresh and cheap vegetables for Indiana Area.
+This is a Web App to help people find fresh and cheap vegetables for Indiana Area.  
 
 The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
-Those features include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.
+Those features include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.  
 
 **Description**  
+* Datasets
+	* 
+	
 3. Description of the datasets and function design
  * [name] [link] [data type] [data columns used] [data amount] Please provide a name+link+basicInfo to each dataset you have used.
  * [Y/N] Do you use the primary dataset ”online climate data” from data.gov? 
@@ -39,16 +41,16 @@ Those features include but not limited to: freshness, price, open hours, distanc
 * js  --A directory contains all the javescript files  
 * image  --A directory contains all images used in the website  
   
-**5. Build Case**  
+**Build up information**  
 At this point the project only uses HTML/CSS/Javascript. However, other dependencies might be used in the future. An updated readme file will then be submitted along with later submissions.
 
-**Test Case**  
+**Test**  
 The complete version of this App is exptected to be tested on the following broswers: Chrome, Firefox and Safari
 
 **Additional information**  
-My interests of study for my Master's program greatly related to Natural Language Processing. So if time allows, I would like to add some NLP stuff to the App as well. For example, information retrival from natural language text that users entered, and other things like text to speech feature using Google or IBM speech to text API. I've made an web app using text to speech API from IBM's Bluemix platform before but speech to text was a challenge, which remains a problem for me who did not have a solid programming background.  
+My interests of study for my Master's program greatly related to Natural Language Processing. So if time allows, I would like to add some NLP stuff to the App as well. For example, information retrival from natural language text that users entered, and other things like text to speech feature using Google or IBM speech to text API. I've made an web app using text to speech API from IBM's Bluemix platform before (http://jsx.mybluemix.net/), but speech to text was a challenge, which remains a difficulty for me who did not have a solid programming background.  
 
 I will thank my boyfriend Jason Macnak, a former Purdue graduate and a software engineer at Google, for all the supports and additional help I got and will be getting on the project.  
 
 **Contact**  
-For questions about this App please feel free to contact Xiaonan Jing (jing@purdue.edu)
+For questions about this project please feel free to contact Xiaonan Jing (jing@purdue.edu)
