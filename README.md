@@ -11,9 +11,13 @@ Those features will include but not limited to: freshness, price, open hours, di
 dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
 More datasets maybe added later.  
 
-	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)
-		** Normals Daily Data for Indiana from 3/24/2012 to 3/24/2016 
+	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)  
+	Normals Daily Data for Indiana from 3/24/2012 to 3/24/2016  
 	* 
+	
+* Map View
+* 
+
 3. Description of the datasets and function design
  * [name] [link] [data type] [data columns used] [data amount] Please provide a name+link+basicInfo to each dataset you have used.
  * [Y/N] Do you use the primary dataset ”online climate data” from data.gov? 
