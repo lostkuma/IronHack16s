@@ -1,6 +1,5 @@
 Fina Your Veggies for Indiana v1.0.0 -2016-3-26
-
-[Please visit GitHub for the complete code](https://github.com/lostkuma/iron-hack-project/)
+Please visit GitHub for the complete code: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)
 
 This is a Web App to help people finding fresh and cheap vegetables for Indiana Area.
 The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
