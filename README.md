@@ -40,13 +40,14 @@ Those features include but not limited to: freshness, price, open hours, distanc
 * image  --A directory contains all images used in the website  
   
 **5. Build Case**  
-At this point the project only uses html, css, and javascript. However, other dependencies might be used in the future. An updated readme file will then be submitted along with later submissions.
+At this point the project only uses HTML/CSS/Javascript. However, other dependencies might be used in the future. An updated readme file will then be submitted along with later submissions.
 
 **Test Case**  
-This App will be tested on Chrome, Firefox and Safari
+The complete version of this App is exptected to be tested on the following broswers: Chrome, Firefox and Safari
 
 **Additional information You Want to Share with Us**  
-E.g. any problems you faced/fixed, where you reached out to for help, etc.
+My interests of study for my Master's program greatly related to Natural Language Processing. So if time allows, I would like to add some NLP stuff to the App as well. For example, information retrival from natural language text that users entered, and other things like text to speech feature using Google or IBM speech to text API. I've made an web app using text to speech API from IBM's Bluemix platform before but speech to text was a challenge, which remains a problem for me who did not have a solid programming background.  
+I will thank my boyfriend Jason Macnak, a former Purdue graduate and a software engineer at Google, for all the supports and additional help I got and will be getting on the project.  
 
 **Contact**  
 For questions about this App please feel free to contact Xiaonan Jing (jing@purdue.edu)
