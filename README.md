@@ -1,8 +1,9 @@
-**Find Your Veggies for Indiana** v1.0.0 - 2016-03-26 
+Find Your Veggies for Indiana v1.0.0 - 2016-03-26 
 
 Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)
 
 This is a Web App to help people finding fresh and cheap vegetables for Indiana Area.
+
 The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
 Those features include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.
 
@@ -11,9 +12,11 @@ Those features include but not limited to: freshness, price, open hours, distanc
  * [Y/N] Do you use the primary dataset ”online climate data” from data.gov? 
  * [Y/N] [List] Are all these datasets from data.gov? If not, where are they coming from (links)?
 
-4. Brief Description
+**Description**
 
- * Use a paragraph to introduce your project.
+**Content**
+ * README.txt
+	This file.
 
  Fill in the structued description:
  * Map View:
