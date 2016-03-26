@@ -1,7 +1,9 @@
-(Name of your Application)
-(address)
+Fina Your Veggies for Indiana v1.0.0 -2016-3-26
+[Please visit GitHub for the complete code](https://github.com/lostkuma/iron-hack-project/)
 
-This is 
+This is a Web App to help people finding fresh and cheap vegetables for Indiana Area.
+The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
+Those features include but not limited to: freshness, price, open hours, distance, customer ratings, 
 
 3. Description of the datasets and function design
  * [name] [link] [data type] [data columns used] [data amount] Please provide a name+link+basicInfo to each dataset you have used.
