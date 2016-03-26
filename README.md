@@ -1,22 +1,32 @@
 **Find My Veggies** v1.0.0 - 2016-03-26  
 Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)  
 
-This is a Web App to help people find fresh and cheap vegetables for Tippecanoe County.  
+This is a Web App to help people find fresh and cheap vegetables for Indiana.  
 
 The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
 Those features will include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.  
 
 **Description**  
 * Datasets  
-dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
-More datasets maybe added later.  
+Dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
+Datasets maybe modified later.  
 
 	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)  
-	Normals Daily Data for Indiana from 3/24/2012 to 3/24/2016  
-	* 
+	  Normals Daily Data for Indiana from 3/24/2012 to 3/24/2016  
+	  Columns used: Precipitation, Winds, Daily total sunshine, Maximum temperature, Minimum temperature, Snowfall 
+	* FEMA Disaster Declarations Summary (http://catalog.data.gov/dataset/disaster-declaration)
+	  Disaster Declaration summary data for Indiana from 2004 to 2014
+	  Columns used: Incident type, Declared county area, Begin date, End date,
 	
 * Map View
-* 
+	* The initialized Map is located at Lafayette since Lafayette is the largest city of Tippecanoe county
+	* 
+	
+* Data Visualization
+
+* Interation Form:
+
+
 
 3. Description of the datasets and function design
  * [name] [link] [data type] [data columns used] [data amount] Please provide a name+link+basicInfo to each dataset you have used.
