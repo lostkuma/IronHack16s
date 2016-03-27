@@ -1,7 +1,13 @@
 /* fixed navbar */
+html {
+	height: 100%;
+	width: 100%;
+}
+
 body {
   padding-top: 50px;
   padding-bottom: 20px;
+  height: 100%;
 }
 
 #map{

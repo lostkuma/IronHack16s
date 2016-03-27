@@ -6,7 +6,7 @@ function initMap() {
     //create the google map
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 39.768597, lng: -86.162682},
-        zoom: 10
+        zoom: 8
     });
 
     //create a marker at the centre
