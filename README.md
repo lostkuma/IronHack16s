@@ -22,8 +22,8 @@ All datasets used are from data.gov
 	* The initialized Map is located at Indianapolis since it is the capital of Indiana  
 	* Major locations sell vegetables will be marked on the map with name tags displayed on top  
 	* Market name will shown when mouse is moved to a tag  
-	* Upon clicking on a tag, information with for the location will be shown on the bottom window of the webpage. Information contains the features discussed above for a market  
-	* Current weather data will be retrived use OpenWeatherMap API (http://openweathermap.org/api), and be displayed in the information windown with a weather icon at the bottom of the webpage
+	* Upon clicking on a tag, information for the location will be shown on the side bar of the webpage. Information contains the features discussed above for a market  
+	* Current weather data will be retrived use OpenWeatherMap API (http://openweathermap.org/api), and be displayed in the information windown with a weather icon at the webpage
 	
 * Data Visualization
 	* Radar chart will be used for data visualization  

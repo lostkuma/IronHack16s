@@ -1084,7 +1084,7 @@ html {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.42857143;
+  line-height: 1.1;
   color: #333;
   background-color: #fff;
 }
@@ -4168,7 +4168,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 30px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
@@ -4959,9 +4959,9 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
+  padding-top: 50px;
+  padding-bottom: 0px;
+  margin-bottom: 20px;
   color: inherit;
   background-color: #eee;
 }
@@ -4988,8 +4988,8 @@ a.badge:focus {
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 35px;
+    padding-bottom: 5px;
   }
   .container .jumbotron,
   .container-fluid .jumbotron {

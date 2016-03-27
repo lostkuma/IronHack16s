@@ -5,12 +5,33 @@ html {
 }
 
 body {
-  padding-top: 50px;
-  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 10px;
   height: 100%;
 }
 
 #map{
-    height: 70%;
-    width: 100%;
+  position: absolute;
+    height: 100%;
+    width: 70%;
+    left: 10px;
 }
+
+#side-menu{
+  position: absolute;
+  left: 70%;
+  height: 100%;
+  width: 30%;
+}
+
+#menu-cover {
+  position: absolute;
+  top: 0%;
+  left: 15px;
+  right: 5%;
+  padding: 10% 10% 10%;
+  height: 98%;
+  width: 92%;
+  background-color: #e6ffb3;
+  font-size: 18px;
+  border-radius: 15px;
