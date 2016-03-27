@@ -9,15 +9,13 @@ Those features will include but not limited to: freshness, price, open hours, di
 **Description**  
 * Datasets  
 Dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
-More datasets will be added later.  
-Existing datasets maybe modified later.  
+(More datasets will be added later. Existing datasets maybe modified later.)  
 	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)  
 	  Normals Daily Data for Indiana from 3/24/2012 to 3/24/2016  
 	  Columns used: Precipitation, Winds, Daily total sunshine, Maximum temperature, Minimum temperature, Snowfall  
 	* FEMA Disaster Declarations Summary (http://catalog.data.gov/dataset/disaster-declaration)  
 	  Disaster Declaration summary data for Indiana from 2004 to 2014  
 	  Columns used: Incident type, Declared county area, Begin date, End date  
-
 All datasets used are from data.gov  
 	
 * Map View
