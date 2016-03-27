@@ -9,48 +9,35 @@ Those features will include but not limited to: freshness, price, open hours, di
 **Description**  
 * Datasets  
 Dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
-Datasets maybe modified later.  
-
+More datasets will be added later.  
+Existing datasets maybe modified later.  
 	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)  
 	  Normals Daily Data for Indiana from 3/24/2012 to 3/24/2016  
-	  Columns used: Precipitation, Winds, Daily total sunshine, Maximum temperature, Minimum temperature, Snowfall 
-	* FEMA Disaster Declarations Summary (http://catalog.data.gov/dataset/disaster-declaration)
-	  Disaster Declaration summary data for Indiana from 2004 to 2014
-	  Columns used: Incident type, Declared county area, Begin date, End date,
+	  Columns used: Precipitation, Winds, Daily total sunshine, Maximum temperature, Minimum temperature, Snowfall  
+	* FEMA Disaster Declarations Summary (http://catalog.data.gov/dataset/disaster-declaration)  
+	  Disaster Declaration summary data for Indiana from 2004 to 2014  
+	  Columns used: Incident type, Declared county area, Begin date, End date  
+
+All datasets used are from data.gov  
 	
 * Map View
-	* The initialized Map is located at Lafayette since Lafayette is the largest city of Tippecanoe county
-	* 
+	* The initialized Map is located at Indianapolis since it is the capital of Indiana  
+	* Major locations sell vegetables will be marked on the map with name tags displayed on top  
+	* Market name will shown when mouse is moved to a tag  
+	* Upon clicking on a tag, information with for the location will be shown on the bottom window of the webpage. Information contains the features discussed above for a market  
+	* Current weather data will be retrived use OpenWeatherMap API (http://openweathermap.org/api), and be displayed in the information windown with a weather icon at the bottom of the webpage
 	
 * Data Visualization
+	* Radar chart will be used for data visualization  
+	* A comparison button will be displayed on the information window. By clicking it, a pop up window that allows the comparison of  three markets will be displayed. Sortable bar graph is used for the comparison for three markets  
+	* By clicking on some features (i.e. price) will display the actualy price range on the chart
 
 * Interation Form:
-
-
-
-3. Description of the datasets and function design
- * [name] [link] [data type] [data columns used] [data amount] Please provide a name+link+basicInfo to each dataset you have used.
- * [Y/N] Do you use the primary dataset ”online climate data” from data.gov? 
- * [Y/N] [List] Are all these datasets from data.gov? If not, where are they coming from (links)?
-
-  Fill in the structued description:
- * Map View:
-	1. [Y/N] Basic Map with specific location (your map is located in a meaningful place, city of west lafayette for example)
-	2. [Y/N] Markers for location of markets
-	3. [Y/N] Labels for markets' names
-	4. [Y/N] InfoWindow to show detail information of a market
-	5. [Y/N] [describe] Any other cover on the map (for example, cloud cover to show the weather effect)
-
- * Data Visualization:
-	1. [Y/N] [describe] Use Graph? What is the type? (bar chart, pie chart, radar chart ...)
-	2. [Y/N] [List] Any interaction available on the graph? List them (enable click on numbers, drag on lines, change time/variables ...)
-	
- * Interaction Form:
-	1. [Y/N] [List] Any information output? list them. (text field, text area, label, plain HTML ...)
-	2. [Y/N] [List] Any operation option (filters)? List them. (search markets, search vegetables, filter based on price, sort based on convenience ...)
-	3. [Y/N] [List] Any information input? List them. (comments, markers, user preference ...)
-	4. [Y/N] [List] Interaction with Map? List them. (filter on price will affect map markers, sort on price will affect map markers, ...)
-	5. [Y/N] [List] Interaction with data visualization? List them. (filter, sort, set variables ...)
+	* Information output: The weblink of the markets will be provided, and freshness rating will be displayed for each market
+	* Operation option: Filters based on features will affect the change of tags on the map, and search on market names will only result to the tags of a certain set of markets (e.g. search "Walmart" will only display tags for Walmart)
+	* Information input: Allow area selection by inputing a county/city name on top left texting box on the map
+	* Interaction with map: By clicking the comparison button on the information window, a pop up window that allows the comparison of  three markets will be displayed. The market in selection will be automatically added and other two markets can be added to comparison by dragging the tags on the map  
+	* Interaction with data visualization: Checkboxes that enable/disable features will be available above the radar chart, which will affect the chart  
 
 **Content**  
 * README.txt  --This file.  
