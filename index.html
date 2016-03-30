@@ -34,6 +34,17 @@
 
 	    <!-- map and side menu -->
 	    <div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+		    		<div class="input-group">
+		      			<input type="text" class="form-control" placeholder="Tell me your location...">
+		      			<span class="input-group-btn">
+		        			<button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+		      			</span>
+		    		</div><!-- /input-group -->
+		  		</div><!-- /.col-lg-6 -->
+			</div><!-- /.row -->
+
 		    <div id="map"></div>
 			<div class="side-menu">
 				<!-- tabs -->
@@ -43,6 +54,7 @@
 			  	</ul>
 			  	<div class="tab-content">
 				   	<div id="basic" class="tab-pane fade in active">
+				      	<!-- features -->
 				      	<div id="menu-cover">
 				      		<p>"the information of a single store goes here"</p>
 				      		<p>Add/delete features to be compared</p>
@@ -56,13 +68,13 @@
 				    </div>
 				    <div id="comparison" class="tab-pane fade">
 						<div id="menu-cover">
-							<p>comparison of three stores will be showed here</p>
+							<p>"comparison of three stores will be showed here"</p>
+							<p>Select up to three stores for comparison</p>
 						</div>
 				    </div>
 			  	</div>
 			</div>
 		</div>
-
 
 
 	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2LC9akN1uvqZ8xKaGoihBxK6PEUyU8Q&callback=initMap"
