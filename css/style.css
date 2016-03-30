@@ -10,6 +10,18 @@ body {
 	height: 100%;
 }
 
+.navbar-icon {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	max-height: 50px;
+	max-width: 50px;
+}
+
+@media screen and (max-width: 800px) {
+	.navbar-icon {display: none;}
+}
+
 #map{
 	position: absolute;
     height: 98%;
@@ -35,7 +47,7 @@ body {
 	background-color: #eee;
 	font-size: 14px;
 	border-radius: 5px;
-	overflow: hidden;
+	overflow: scroll;
 }
 
 .info-bar {
@@ -59,14 +71,26 @@ body {
   	border-radius: 6px;
 }
 
-.navbar-icon {
+.search-box-style {
 	position: relative;
+	width: auto;
+	top: 9px;
 	float: left;
 	overflow: hidden;
-	max-height: 50px;
-	max-width: 50px;
 }
 
-@media screen and (max-width: 800px) {
-	.navbar-icon {display: none;}
+#search-box-position {
+	position: absolute;
+	left: 132px;
+	margin-right: 30%;
+}
+
+@media screen and (min-width: 1000px) {
+	.search-box-style {width: 50%;}
+}
+
+.multi {
+	column-count:2;
+	-moz-column-count:2;
+	-webkit-column-count: 2;
 }
