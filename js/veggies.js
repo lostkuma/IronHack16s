@@ -72,3 +72,8 @@ window.VEGGIES = {
 	Yacon: [11, 12],
 
 }
+
+
+
+// seasonal veggies chart
+// http://www.cuesa.org/eat-seasonally/charts/vegetables

@@ -1,19 +1,37 @@
-// insert current date
-function getCurrentDate() {
+// get current date and time
+function startTime() {
 	var currentDate = new Date();
-	var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-	
-	var day = currentDate.getDate();
-	month = currentDate.getMonth() + 1;
-	var year = currentDate.getFullYear();
-	var day_of_week = days[currentDate.getDay()];
+	var hour = currentDate.getHours();
+	var minute = currentDate.getMinutes();
+	var second = currentDate.getSeconds();
+	minute = checkTime(minute);
+	second = checkTime(second);
+	var current_time = hour + ":" + minute + ":" + second;
+	document.getElementById("current-date").innerHTML = getCurrentDate() +  current_time;
+	var t = setTimeout(startTime, 500);
 
-	var element = document.getElementById("current-date");
-	var current_date = String(month) + "/" + String(day) + "/" + String(year);
-	var display_date = "Today is: " + current_date + ", " + String(day_of_week);
-	element.innerHTML = display_date;
+
+	function getCurrentDate() {
+		var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+		var day = currentDate.getDate();
+		month = currentDate.getMonth() + 1;
+		var year = currentDate.getFullYear();
+		var day_of_week = days[currentDate.getDay()];
+
+		var current_date = month + "/" + day + "/" + year;
+		var display_date = "Today is: " + current_date + " " + day_of_week + ", ";
+		return display_date;
+	}
 }
 
+function checkTime(i) {
+	if (i < 10) {
+		i = "0" + i
+	}
+return i;
+}
+
+// get list of seasonal veggies for this month
 function seasonalVeggies() {
 	var seasonal_veggies = []
 	var veggies = VEGGIES;
@@ -26,16 +44,9 @@ function seasonalVeggies() {
 			}
 		}
 	}
-	console.log(seasonal_veggies);
 	document.getElementById("seasonal-veggies").innerHTML = seasonal_veggies.join("<br>");
 }
 
-getCurrentDate();
+startTime();
 seasonalVeggies();
 
-
-
-
-
-// seasonal veggies chart
-// http://www.cuesa.org/eat-seasonally/charts/vegetables
