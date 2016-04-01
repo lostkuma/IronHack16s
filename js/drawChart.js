@@ -27,7 +27,7 @@ var mycfg = {
 
 //Call function to draw the Radar chart
 //Will expect that data is in %'s
-RadarChart.draw("#chart", d, mycfg);
+RadarChart.draw("#radar-chart", d, mycfg);
 
 //Initiate legend
 var svg = d3.select('#body')

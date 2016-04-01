@@ -96,10 +96,13 @@ html {
 
 .radar-chart {
 	padding-top: 30px;
+	visibility: hidden;
 }
 
-#chart {
+#radar-chart {
 	position: relative;
 	top: 10px;
 	left: -53px;
 }
+
+

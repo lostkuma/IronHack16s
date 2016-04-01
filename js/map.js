@@ -59,6 +59,10 @@ function createMarkerAndDetailedInfo(place, store_info) {
         setSideMenu(store_info);
         // get the route from current position to marker
         calculateAndDisplayRoute(directionsService, directionsDisplay, place);
+        // display radar chart
+        $(document).ready(function() {
+            $(".radar-chart").css('visibility','visible');
+        });
     });
 }
 
