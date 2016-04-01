@@ -1,34 +1,32 @@
 //init the google map in the webpage         
-var map, service, pos, infowindow;
-var place_id_list = new Array;
+var map, service, pos, infowindow, directionsDisplay, directionsService;
 var store_info_list = new Array;
 
-function initMap() {
 
-//    var directionsDisplay = new google.maps.DirectionsRenderer;
-//    var directionsService = new google.maps.DirectionsService;
-    pos = {lat: 39.765, lng: -86.16};
+function initMap() {
+    // set a center
+    pos = {lat: 40.43, lng: -86.9};
+    var center = {lat: 40.425, lng: -86.90};
 
     //create the google map
     map = new google.maps.Map(document.getElementById("map"), {
-        center: pos,
-        zoom: 12
+        center: center,
+        zoom: 13
     });
 
+    // set up info window
     infowindow = new google.maps.InfoWindow();
 
-//    directionsDisplay.setMap(map);
-//    calculateAndDisplayRoute(directionsService, directionsDisplay);
+    // set up direction display and service
+    directionsDisplay = new google.maps.DirectionsRenderer;
+    directionsService = new google.maps.DirectionsService;
+    directionsDisplay.setMap(map);
 
-//    var onChangeHandler = function() {
-//        calculateAndDisplayRoute(directionsService, directionsDisplay);
-//    };
-//    destination.addEventListener('change', onChangeHandler);
-
+    // request a nearby search service
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
         location: pos,
-        radius: 10000,
+        radius: 3500,
         type: 'grocery_or_supermarket'
     }, callback);
 }
@@ -37,64 +35,173 @@ function initMap() {
 function callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
-            service.getDetails({
-                placeId: results[i].place_id
-            }, function(place, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-//                    var store_info = {
-//                        place_id: place.id,
-//                        name: place.name,
-//                        address: place.formatted_address,
-//                        phone: place.formatted_phone_number,
-//                        rating: place.rating,
-//                        map_url: place.url,
-//                       website: place.website,
-//                        openhour: place.opening_hours.weekday_text
-//                    }
-//                    store_info_list.push(store_info);
-                    createMarkerAndDetailedInfo(place);
-                } else {
-                    console.log('Place details request failed due to ' + status);
-                }
-            });
+            var place_id = results[i].place_id;
+                getPlaceDetails(place_id);
         }
     }
 }
 
 
-function createMarkerAndDetailedInfo(place) {
+function createMarkerAndDetailedInfo(place, store_info) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location
     });
-    google.maps.event.addListener(marker, 'click', function() {    
-        var if_open_now;
-        if (place.opening_hours.open_now == true) {
-            if_open_now = 'Yes'
-        } else {
-            if_open_now = 'No'
-        }
-
-        infowindow.setContent('<div><strong>' + place.name + '  ' 
-            + '(Open now: ' + if_open_now + ')</strong><br>' + place.formatted_address);
+    // clikc marker trigger event
+    google.maps.event.addListener(marker, 'click', function() {  
+        // add place name, if open now, place address, open in map to info window
+        google_map_link = '<a target="_blank" href=' + store_info["map_url"] + '>View on Google Maps</a>'
+        infowindow.setContent('<div><strong>' + store_info["name"] + '  ' + '(Open now: ' 
+            + store_info["if_open_now"] + ')</strong><br>' + store_info["address"] + '<br>' + google_map_link);
         infowindow.open(map, this);
-
-        document.getElementById("store-name").innerHTML = place.name
+        // replace with store name and detailed info in side menu 
+        setSideMenu(store_info);
+        // get the route from current position to marker
+        calculateAndDisplayRoute(directionsService, directionsDisplay, place);
     });
 }
 
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+function getPlaceDetails(place_id) {
+    service.getDetails({
+        placeId: place_id
+    }, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var store_info = {
+                place_id: place.place_id, 
+                name: place.name, 
+                address: place.formatted_address, 
+                map_url: place.url, 
+                phone: "?", 
+                website: "?",
+                rating: "?",
+                price: "?",
+                open_hour: "?",
+                if_open_now: "?"
+            }  
+            if (place.hasOwnProperty("formatted_phone_number")) {
+                store_info["phone"] = place.formatted_phone_number;
+            } 
+            if (place.hasOwnProperty("website")) {
+                store_info["website"] = place.website;
+            } 
+            if (place.hasOwnProperty("rating")) {
+                store_info["rating"] = place.rating;
+                store_info["user_ratings_total"] = place.user_ratings_total;
+            } 
+            if (place.hasOwnProperty("price_level")) {
+                store_info["price"] = place.price_level;
+            }
+            if (place.hasOwnProperty("opening_hours")) {
+                store_info["open_hour"] = place.opening_hours.weekday_text;
+                if(place.opening_hours.open_now == true) {
+                    store_info["if_open_now"] = 'Yes'
+                } else {
+                    store_info["if_open_now"] = 'No'
+                }
+            }
+            // store_info_list.push(store_info);
+            // creat marker and set click on marker event 
+            // set info window and side menu content for store requested detail
+             createMarkerAndDetailedInfo(place, store_info);
+        } else {
+        console.log('Place details request failed due to ' + status);
+        }
+    });
+}
+
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, place, selectedMode) {
+    var purdue = {lat: 40.424814, lng: -86.913691};
     directionsService.route({
-        origin: pos,
-        destination: {lat: 39.86, lng: -87.16},
+        origin: purdue,
+        destination: place.geometry.location,
         travelMode: google.maps.TravelMode.DRIVING
     }, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
     } else {
-        window.alert('Directions request failed due to ' + status);
+        console.log('Directions request failed due to ' + status);
     }
   });
 }
+
+
+function setSideMenu(store_info) {
+    // store name
+    document.getElementById("store-name").innerHTML = store_info["name"];
+    // store tel
+    if (store_info["phone"] != "?") {
+        document.getElementById("store-phone").innerHTML = store_info["phone"];
+    } else {
+        document.getElementById("store-phone").innerHTML = "phone number: N/A";        
+    }
+    // store site
+    if (store_info["website"] != "?") {
+        document.getElementById("store-website").innerHTML = store_info["website"];
+        document.getElementById("store-website").href = store_info["website"]
+        document.getElementById("store-website").target = "_blank";
+    } else {
+        document.getElementById("store-website").innerHTML = "";
+        document.getElementById("store-website").href = "";
+        ;
+    }
+    // store today open hours
+    var today = new Date();
+    var day_of_week = today.getDay() - 1;
+    if (day_of_week == -1) {
+        day_of_week = 6;
+    }
+    if (store_info["open_hour"] != "?") {
+        document.getElementById("open-hour-today").innerHTML = store_info["open_hour"][day_of_week];
+    } else {
+        document.getElementById("open-hour-today").innerHTML = "open hour: N/A";
+    }
+    // store rating
+    if (store_info["rating"] != "?") {
+        var stars = parseFloat(store_info["rating"]);
+        var img = storeRating(stars);
+        document.getElementById("store-rating").innerHTML = "Rating:  <img src=" + img + ">";
+    } else {
+        document.getElementById("store-rating").innerHTML = "rating: N/A";   
+    }
+}
+
+// need to fix call order
+function storeRating(stars) {
+    var img;
+    if (0.0 <= stars < 0.5) {
+        img = "image/0.5-star.png";
+    }
+    if (1.0 <= stars < 1.5) {
+        img = "image/1-star.png";
+    }
+    if (1.5 <= stars < 2.0) {
+        img = "image/1.5-star.png";
+    }
+    if (2.0 <= stars < 2.5) {
+        img = "image/2-star.png";
+    }
+    if (2.5 <= stars < 3.0) {
+        img = "image/2.5-star.png";
+    }
+    if (3.0 <= stars < 3.5) {
+        img = "image/3-star.png";
+    }
+    if (3.5 <= stars < 4.0) { 
+        img = "image/3.5-star.png";
+    }
+    if (4.0 <= stars < 4.5) {
+        img = "image/4-star.png";
+    }
+    if (4.5 <= stars < 5.0) {
+        img = "image/4.5-star.png";
+    }
+    if (stars == 5.0) {
+        img = "image/5-star.png";
+    }                                     
+    console.log(img);
+    return img;
+}
+

@@ -1,30 +1,41 @@
 // get current date and time
+var month;
+
 function startTime() {
 	var currentDate = new Date();
 	var hour = currentDate.getHours();
 	var minute = currentDate.getMinutes();
 	var second = currentDate.getSeconds();
-	minute = checkTime(minute);
-	second = checkTime(second);
-	var current_time = hour + ":" + minute + ":" + second;
-	document.getElementById("current-date").innerHTML = getCurrentDate() +  current_time;
+	minute = checkSecMin(minute);
+	second = checkSecMin(second);
+	var am_or_pm;
+	if (hour < 12) {
+		am_or_pm = "am";
+	} else if (hour == 12) {
+		am_or_pm = "pm";
+	} else if (hour > 12) {
+		hour -= 12;
+		am_or_pm = "pm";
+	}
+	var current_time = hour + ":" + minute + ":" + second + am_or_pm;
+	document.getElementById("current-date").innerHTML = getCurrentDate() + " " + current_time;
 	var t = setTimeout(startTime, 500);
 
 
 	function getCurrentDate() {
-		var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+		var days = ['Sunday','Monday','Tueday','Wednesday','Thursday','Friday','Satday'];
 		var day = currentDate.getDate();
 		month = currentDate.getMonth() + 1;
 		var year = currentDate.getFullYear();
 		var day_of_week = days[currentDate.getDay()];
 
 		var current_date = month + "/" + day + "/" + year;
-		var display_date = "Today is: " + current_date + " " + day_of_week + ", ";
+		var display_date = day_of_week + ", " + current_date + ", ";
 		return display_date;
 	}
 }
 
-function checkTime(i) {
+function checkSecMin(i) {
 	if (i < 10) {
 		i = "0" + i
 	}
@@ -38,14 +49,15 @@ function seasonalVeggies() {
 	for (var key in veggies) {
 		var seasons_of_veggie;
 		seasons_of_veggie = veggies[key];
-		for (var number in seasons_of_veggie) {
-			if (number == month) {
+		for (var i = 0; i < seasons_of_veggie.length; i++) {
+			if (seasons_of_veggie[i] == month) {
 				seasonal_veggies.push(key.replace(/_/, " "));
 			}
 		}
 	}
 	document.getElementById("seasonal-veggies").innerHTML = seasonal_veggies.join("<br>");
 }
+
 
 startTime();
 seasonalVeggies();

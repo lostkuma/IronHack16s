@@ -1,4 +1,4 @@
-/* seasonal veggie chart */
+// seasonal veggie chart
 
 window.VEGGIES = {
 	Artichokes: [3, 4, 5, 6, 9, 10, 11, 12],
