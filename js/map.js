@@ -175,37 +175,15 @@ function setSideMenu(store_info) {
 // need to fix call order
 function storeRating(stars) {
     var img;
-    if (0.0 <= stars < 0.5) {
-        img = "image/0.5-star.png";
+    if (stars == 5) {
+        img = "image/5-star.png"
+    } else {
+        for (i = 0; i < 5; i += 0.5) {
+            if (i <= stars && stars < (i + 0.5)) {
+                img = "image/" + i + "-star.png"
+            }
+        }
     }
-    if (1.0 <= stars < 1.5) {
-        img = "image/1-star.png";
-    }
-    if (1.5 <= stars < 2.0) {
-        img = "image/1.5-star.png";
-    }
-    if (2.0 <= stars < 2.5) {
-        img = "image/2-star.png";
-    }
-    if (2.5 <= stars < 3.0) {
-        img = "image/2.5-star.png";
-    }
-    if (3.0 <= stars < 3.5) {
-        img = "image/3-star.png";
-    }
-    if (3.5 <= stars < 4.0) { 
-        img = "image/3.5-star.png";
-    }
-    if (4.0 <= stars < 4.5) {
-        img = "image/4-star.png";
-    }
-    if (4.5 <= stars < 5.0) {
-        img = "image/4.5-star.png";
-    }
-    if (stars == 5.0) {
-        img = "image/5-star.png";
-    }                                     
-    console.log(img);
     return img;
 }
 
