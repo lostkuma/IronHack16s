@@ -1,8 +1,9 @@
 var w = 270,
 	h = 270;
 
-
 var colorscale = d3.scale.category10();
+
+var LegendOptions = []
 
 var d = [
 	[

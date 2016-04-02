@@ -1,7 +1,7 @@
-**Find My Veggies** v1.0.0 - 2016-03-26  
-Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)  
+**Find My Veggies** v1.0.0 - 2016-04-01  
+* **Problem:** Due to the Google free api plan problem, only maximum to 1000 quote can be requested in 24hr, so when querying date for store details, only about 9 store details can be requested.
 
-This is a Web App to help people find fresh and cheap vegetables for Indiana.  
+This is a Web App to help people find fresh and cheap vegetables for Lafayette area.  
 
 The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
 Those features will include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.  
@@ -11,36 +11,46 @@ Those features will include but not limited to: freshness, price, open hours, di
 Dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
 (More datasets will be added later. Existing datasets maybe modified later.)  
 	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)  
-	  Normals Daily Data for Indiana from 3/24/2012 to 3/24/2016  
+	  Normals Daily Data for Indiana from 3/24/2015 to 3/24/2016  
 	  Columns used: Precipitation, Winds, Daily total sunshine, Maximum temperature, Minimum temperature, Snowfall  
-	* FEMA Disaster Declarations Summary (http://catalog.data.gov/dataset/disaster-declaration)  
-	  Disaster Declaration summary data for Indiana from 2004 to 2014  
-	  Columns used: Incident type, Declared county area, Begin date, End date  
-All datasets used are from data.gov  
+	* Seasonal vegetable chart (http://www.cuesa.org/eat-seasonally/charts/vegetables)  
+	  Vegetable names and in season months
+	
 	
 * Map View
-	* The initialized Map is located at Indianapolis since it is the capital of Indiana  
-	* Major locations sell vegetables will be marked on the map with name tags displayed on top  
-	* Market name will shown when mouse is moved to a tag  
-	* Upon clicking on a tag, information for the location will be shown on the side bar of the webpage. Information contains the features discussed above for a market  
-	* Current weather data will be retrived use OpenWeatherMap API (http://openweathermap.org/api), and be displayed in the information windown with a weather icon at the webpage
+	* The initialized Map is located at West lafayette and Lafayette area
+	* Major locations sell vegetables are marked with markers on the map
+	* Click on marker
+		* info window with store names, locations, and view in google map links displayed
+		* side menu displays detailed information for the store
+		* display the driving route for the store
+		* estimated driving time will be added in the next update, and possibily traveling method selections too
+		* geolocation features for automatically detect browser location will be added in the next update
+	* Current weather data will be retrived use OpenWeatherMap API (http://openweathermap.org/api), and be displayed in the side menu
 	
 * Data Visualization
-	* Radar chart will be used for data visualization  
-	* A comparison button will be displayed on the information window. By clicking it, a pop up window that allows the comparison of  three markets will be displayed. Sortable bar graph is used for the comparison for three markets  
-	* By clicking on some features (i.e. price) will display the actualy price range on the chart
+	* Radar chart for single store's features
+	* side menu tab 1 - basic info
+		* store name, phone, website, ratings, open hour for today is displayed
+		* radar chart for detailed features (data needs to be calculated and linked later)
+	* side menu tab 2 - compare stores
+		* compare three stores information with radar chart or bar graph will be added in the next update
+		* features of the stores are displayed for choices
+	* side menu tab 3 - seasonal vegetable chart
+		* seasonal vegetables for this month are displayed
+		* click on names and display pictures function will be added in the next update
 
 * Interation Form:
-	* Information output: The weblink of the markets will be provided, and freshness rating will be displayed for each market
-	* Operation option: Filters based on features will affect the change of tags on the map, and search on market names will only result to the tags of a certain set of markets (e.g. search "Walmart" will only display tags for Walmart)
-	* Information input: Allow area selection by inputing a county/city name on top left texting box on the map
-	* Interaction with map: By clicking the comparison button on the information window, a pop up window that allows the comparison of  three markets will be displayed. The market in selection will be automatically added and other two markets can be added to comparison by dragging the tags on the map  
-	* Interaction with data visualization: Checkboxes that enable/disable features will be available above the radar chart, which will affect the chart  
+	* Information output: store links and link to google maps, google map place details output for each store
+	* Operation option: switch between tabs, turn on/off features, current date and time displayed on top right and will disappear if browser window gets small. App starts with a cover which can scroll down with animation when clicking on buttons and navigation bar on top.
+	* Information input: turn on/off features for comparison of stores
+	* Interaction with map: click on markers, info window displays and side menu changes for specific store, geolocation will be added later 
+	* Interaction with data visualization: Checkboxes that enable/disable features for comparison which will change the data displayed
 
 **Content**  
 * README.txt  --This file.  
 * index.html  --Web page for the App  
-* style.css  --CSS style file with template from Bootstrap  
+* css  --A directory contains all css files
 * js  --A directory contains all the javescript files  
 * image  --A directory contains all images used in the website  
   
