@@ -108,6 +108,7 @@ function getPlaceDetails(place_id) {
             // store_info_list.push(store_info);
             // creat marker and set click on marker event 
             // set info window and side menu content for store requested detail
+            console.log(store_info)
              createMarkerAndDetailedInfo(place, store_info);
         } else {
         console.log('Place details request failed due to ' + status);
@@ -165,22 +166,24 @@ function setSideMenu(store_info) {
     // store rating
     if (store_info["rating"] != "?") {
         var stars = parseFloat(store_info["rating"]);
-        var img = storeRating(stars);
-        document.getElementById("store-rating").innerHTML = "Rating:  <img src=" + img + ">";
+        var image_location = storeRating(stars);
+        document.getElementById("store-rating").innerHTML = "Rating: " + stars + " <img src=" + image_location + ">";
     } else {
-        document.getElementById("store-rating").innerHTML = "rating: N/A";   
+        document.getElementById("store-rating").innerHTML = "rating: N/A";  
     }
 }
 
-// need to fix call order
+
 function storeRating(stars) {
     var img;
     if (stars == 5) {
-        img = "image/5-star.png"
+        img = "image/5-star.png";
+    } else if (stars < 0.75) {
+        img = "image/0.5-star.png"; 
     } else {
-        for (i = 0; i < 5; i += 0.5) {
+        for (i = 0.75; i < 5; i += 0.5) {
             if (i <= stars && stars < (i + 0.5)) {
-                img = "image/" + i + "-star.png"
+                img = "image/" + (i + 0.25) + "-star.png"
             }
         }
     }

@@ -99,10 +99,14 @@ html {
 	visibility: hidden;
 }
 
-#radar-chart {
+#radar-chart-bi {
 	position: relative;
 	top: 10px;
 	left: -53px;
 }
 
-
+#radar-chart-cs {
+	position: relative;
+	top: 10px;
+	left: -53px;
+}

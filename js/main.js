@@ -61,8 +61,8 @@ function seasonalVeggies() {
 
 requestData = {
 	"datasetid": "GHCNDMS",
-	"startdate": "2003-03-01",
-	"enddate": "2004-03-02",
+	"startdate": "2013-03-01",
+	"enddate": "2013-10-02",
 	"stationid": "GHCND:USw00014835",
 	"cityid": "CITY:US180006",
 	"limit": 100,

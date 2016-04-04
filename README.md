@@ -9,12 +9,20 @@ Those features will include but not limited to: freshness, price, open hours, di
 **Description**  
 * Datasets  
 Dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
-(More datasets will be added later. Existing datasets maybe modified later.)  
 	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)  
-	  Normals Daily Data for Indiana from 3/24/2015 to 3/24/2016  
-	  Columns used: Precipitation, Winds, Daily total sunshine, Maximum temperature, Minimum temperature, Snowfall  
+	  Daily summaeries for Purdue Airport station and West Lafayette station from 2011/1/1 to 2015/12/31  
+	  Columns used: Precipitation, Winds, Snow, Maximum temperature, Minimum temperature  
+	* Farmer's market data (https://www.ams.usda.gov/local-food-directories/farmersmarkets)  
+	  Columns used: Farmer's market open seasons for Lafayette and West Lafayette, IN  
+	* Surface water data for the nation (http://catalog.data.gov/dataset/usgs-surface-water-data-for-the-nation-national-water-information-system-nwis)
+	  Columns used: surface water for wabash river at lafayette: average daily discharge from 1923/10/1 to 2015/9/30  
+	* Severe weather data (http://catalog.data.gov/dataset/severe-weather-data-inventory)  
+	  Columns used: great lafayette area storm and hail reports from 2011/1/1 to 2015/12/31  
+	---------------- the above datasets are from data.gov ----------------
 	* Seasonal vegetable chart (http://www.cuesa.org/eat-seasonally/charts/vegetables)  
 	  Vegetable names and in season months
+	* Google Store Details data gotten from query (https://maps.googleapis.com/maps/)  
+	  geometry location, place_id, place name, place address, place phone number, place website, place rating, place price level, place open hours  
 	
 	
 * Map View
@@ -50,15 +58,34 @@ Dataets that will be used are listed. However, at this phase not all details of 
 **Content**  
 * README.txt  --This file.  
 * index.html  --Web page for the App  
-* css  --A directory contains all css files
-* js  --A directory contains all the javescript files  
 * image  --A directory contains all images used in the website  
+* css  --A directory contains all css files  
+	* style.css --Customized css  
+	* scrolling-nav.css --Scrolling page css  
+* js  --A directory contains all the javescript files  
+	* data_sheet.js --Processed data. Everything is scaled to a 1 to 10 scale  
+	* drawChartBI.js --Radar chart for basic info tab  
+	* drawChartCS.js --Radar chart for compare stores tab  
+	* jquery.easing.min.js --Multiple easing option for scrolling effect  
+	* main.js --File for functions other than map  
+	* map.js --File for Google map and related functions  
+	* radarChart.js --Radar chart initializing  
+	* scrolling-nav.js --Scrolling effect of the page  
+	* veggies.js --Constants for monthly vegetables
+* data_processing --A directory with all data and data processing scripts used  
+	* decisiontree.py --Python file for process decisiontree using weather data  
+	* processdata.py --Python file for processing and scaling raw data  
+	* weather_data_for_training.csv --Training set used for decision tree (2011/1/1 - 2015/12/31 daily summary)  
+	* weather_data_raw.csv --Organized raw weather data (2011/1/1 - 2015/12/31 daily summary for purdue station)  
+	* surface_water_data.csv --Surface water data (1923/10/1 - 2015/9/30 daily average discharge at wabash river station)
+	* hail --A directory for hail data .txt (2011/1/1 - 2015/12/31 hailing report list)  
+	* storm --A directory for storm data .txt (2011/1/1 - 2015/12/31 storming report list)
   
 **Build up information**  
-At this point the project only uses HTML/CSS/Javascript. However, other dependencies might be used in the future. An updated readme file will then be submitted along with later submissions.
+The project only uses HTML/CSS/Javascript. Python was used for data training and transforming, however, the results are printed out and pasted to a javascrpt file to be able to access easier for javascript further calculation.
 
 **Test**  
-The complete version of this App is exptected to be tested on the following broswers: Chrome, Firefox and Safari
+The App is test in Chrome, Firefox and Safari. The Geolocation function which request the browser's location has to be ran on a local/real server on Chrome to be able to functioning since Chrome seems to block some thing.
 
 **Additional information**  
 My interests of study for my Master's program greatly related to Natural Language Processing. So if time allows, I would like to add some NLP stuff to the App as well. For example, information retrival from natural language text that users entered, and other things like text to speech feature using Google or IBM speech to text API. I've made an web app using text to speech API from IBM's Bluemix platform before (http://jsx.mybluemix.net/), but speech to text was a challenge, which remains a difficulty for me who did not have a solid programming background.  
