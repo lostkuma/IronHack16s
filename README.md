@@ -7,12 +7,11 @@ The App uses Google Map API combined with open datasets to display features for 
 Those features will include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.  
 
 **Description**  
-* Datasets  
-Dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
+* Datasets   
 	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)  
 	  Daily summaeries for Purdue Airport station and West Lafayette station from 2011/1/1 to 2015/12/31  
 	  Columns used: Precipitation, Winds, Snow, Maximum temperature, Minimum temperature  
-	* Farmer's market data (https://www.ams.usda.gov/local-food-directories/farmersmarkets)  
+	* National farmer's market directory (http://catalog.data.gov/dataset/national-farmers-market-directory)   
 	  Columns used: Farmer's market open seasons for Lafayette and West Lafayette, IN  
 	* Surface water data for the nation (http://catalog.data.gov/dataset/usgs-surface-water-data-for-the-nation-national-water-information-system-nwis)
 	  Columns used: surface water for wabash river at lafayette: average daily discharge from 1923/10/1 to 2015/9/30  
@@ -23,7 +22,6 @@ Dataets that will be used are listed. However, at this phase not all details of 
 	  Vegetable names and in season months
 	* Google Store Details data gotten from query (https://maps.googleapis.com/maps/)  
 	  geometry location, place_id, place name, place address, place phone number, place website, place rating, place price level, place open hours  
-	
 	
 * Map View
 	* The initialized Map is located at West lafayette and Lafayette area
