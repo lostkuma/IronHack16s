@@ -26,35 +26,35 @@ window.DATA_SHEET = {
 	DecisionTree: [
 		{
 			"map_of_children":
-			"selected_attribute": 
+			"best_split_attribute": 
 		}
 		{
 			"map_of_chidren": 
-			"selected_attribute":
+			"best_split_attribute":
 		}
 		{
 			"map_of_children":
-			"selected_attribute": 
+			"best_split_attribute": 
 		}
 		{
 			"map_of_chidren": 
-			"selected_attribute":
+			"best_split_attribute":
 		}
 		{
 			"map_of_children":
-			"selected_attribute": 
+			"best_split_attribute": 
 		}
 		{
 			"map_of_chidren": 
-			"selected_attribute":
+			"best_split_attribute":
 		}
 		{
 			"map_of_children":
-			"selected_attribute": 
+			"best_split_attribute": 
 		}
 		{
 			"map_of_chidren": 
-			"selected_attribute":
+			"best_split_attribute":
 		}						
 	],
 
@@ -137,7 +137,7 @@ window.DATA_SHEET = {
 }
 
 
-// https://www.ams.usda.gov/local-food-directories/farmersmarkets
+// http://catalog.data.gov/dataset/national-farmers-market-directory
 // http://catalog.data.gov/dataset/usgs-surface-water-data-for-the-nation-national-water-information-system-nwis
 // http://catalog.data.gov/dataset/severe-weather-data-inventory
 

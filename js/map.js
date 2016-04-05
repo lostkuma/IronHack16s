@@ -59,6 +59,8 @@ function createMarkerAndDetailedInfo(place, store_info) {
         setSideMenu(store_info);
         // get the route from current position to marker
         calculateAndDisplayRoute(directionsService, directionsDisplay, place);
+        // set radar chart value
+        drawChart(store_info);
         // display radar chart
         $(document).ready(function() {
             $(".radar-chart").css('visibility','visible');
@@ -82,7 +84,8 @@ function getPlaceDetails(place_id) {
                 rating: "?",
                 price: "?",
                 open_hour: "?",
-                if_open_now: "?"
+                if_open_now: "?",
+                open_hour_detail: "?"
             }  
             if (place.hasOwnProperty("formatted_phone_number")) {
                 store_info["phone"] = place.formatted_phone_number;
@@ -99,17 +102,18 @@ function getPlaceDetails(place_id) {
             }
             if (place.hasOwnProperty("opening_hours")) {
                 store_info["open_hour"] = place.opening_hours.weekday_text;
+                store_info["open_hour_detail"] = place.opening_hours.periods;
                 if(place.opening_hours.open_now == true) {
                     store_info["if_open_now"] = 'Yes'
                 } else {
                     store_info["if_open_now"] = 'No'
                 }
             }
+            console.log(store_info);
             // store_info_list.push(store_info);
             // creat marker and set click on marker event 
             // set info window and side menu content for store requested detail
-            console.log(store_info)
-             createMarkerAndDetailedInfo(place, store_info);
+            createMarkerAndDetailedInfo(place, store_info);
         } else {
         console.log('Place details request failed due to ' + status);
         }
@@ -189,4 +193,8 @@ function storeRating(stars) {
     }
     return img;
 }
+
+
+
+
 

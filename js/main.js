@@ -59,36 +59,5 @@ function seasonalVeggies() {
 }
 
 
-requestData = {
-	"datasetid": "GHCNDMS",
-	"startdate": "2013-03-01",
-	"enddate": "2013-10-02",
-	"stationid": "GHCND:USw00014835",
-	"cityid": "CITY:US180006",
-	"limit": 100,
-	"datatypeid": "MMNT"
-}
-// GHCND daily summary
-
-
-function getWeatherData() {
-	function addWeatherRequestToken(request) {
-  		request.setRequestHeader('token', 'kktKTtcWcfdlsZzGDIiMRUXfPoKYOxxA');
- 	}
-	function weatherDataResponseCallback(response) {
-  	console.log(response);
- 	}
- 	var scheduleGetData = {
-		url: "http://www.ncdc.noaa.gov/cdo-web/api/v2/data",
-		dataType: "json",
-		data: requestData,
-		beforeSend: addWeatherRequestToken,
-		success: weatherDataResponseCallback,
-};
-	$.ajax(scheduleGetData);
-}
-
-
 startTime();
 seasonalVeggies();
-getWeatherData();
