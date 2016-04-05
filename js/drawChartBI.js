@@ -24,13 +24,16 @@ function drawChart(store_info) {
 		if (store_info["open_hour_detail"].length == 1) {
 			openhour_value = 1;
 		} else {
+			var total_hour = 0;
 		   	for (i = 0; i < store_info["open_hour_detail"].length; i++) {
 		   		var close_hour = store_info["open_hour_detail"][i]["close"]["hours"];
+		   		if (close_hour == 0) {
+		   			close_hour = 24;
+		   		}
 		   		var open_hour = store_info["open_hour_detail"][i]["open"]["hours"];
 		   		var open_period = close_hour - open_hour;
-		   		var total_hour = 0;
 		   		total_hour += open_period;
-		   		openhour_value = 1 / (24 * 7) * total_hour + 1;
+		   	openhour_value = total_hour / 168;
 		   	}
 		}
 	}

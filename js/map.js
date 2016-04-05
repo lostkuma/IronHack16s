@@ -5,14 +5,27 @@ var store_info_list = new Array;
 
 function initMap() {
     // set a center
-    pos = {lat: 40.43, lng: -86.9};
-    var center = {lat: 40.425, lng: -86.90};
+    pos = {lat: 40.424814, lng: -86.913691};
+    var center = {lat: 40.425, lng: -86.90}; // great lafayette
 
     //create the google map
     map = new google.maps.Map(document.getElementById("map"), {
         center: center,
         zoom: 13
     });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+        map.setCenter(pos);
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        alert("Your browser doesn't support geolocation function, so current location is set to Purdue Mall")
+    }
 
     // set up info window
     infowindow = new google.maps.InfoWindow();
@@ -109,7 +122,6 @@ function getPlaceDetails(place_id) {
                     store_info["if_open_now"] = 'No'
                 }
             }
-            console.log(store_info);
             // store_info_list.push(store_info);
             // creat marker and set click on marker event 
             // set info window and side menu content for store requested detail
@@ -122,9 +134,8 @@ function getPlaceDetails(place_id) {
 
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay, place, selectedMode) {
-    var purdue = {lat: 40.424814, lng: -86.913691};
     directionsService.route({
-        origin: purdue,
+        origin: pos,
         destination: place.geometry.location,
         travelMode: google.maps.TravelMode.DRIVING
     }, function(response, status) {
