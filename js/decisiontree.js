@@ -1000,7 +1000,8 @@ var tree_nodes = {};
 
 function predict(input_dictionary_of_attributes) {
 	var current_node = tree_nodes[0];
-	while(true) {
+	var level = 0;
+	while(level < 10) {
 		if(current_node["has_decision"] == true) {
 			return current_node["decision"];
 		}
@@ -1010,7 +1011,9 @@ function predict(input_dictionary_of_attributes) {
 		if (value in current_node["children"]) {
 			current_node = tree_nodes[current_node["children"][value]];
 		}
+		level++;
 	}
+	return 5;
 }
 
 
