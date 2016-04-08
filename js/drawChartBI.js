@@ -1,70 +1,48 @@
-var price_value, 
-	rating_value,
-	service_value,
-	openhour_value;
 
-function drawChart(store_info) {
-	if (store_info["price"] == "?") {
-		price_value = 0.5;
-	} else {
-		price_value = store_info["price"] * 2 / 10;
+function drawChart_Basic() {
+	var chart1_data = [];
+	if (price_value != null) {
+		chart1_data.push({axis:"price", value: price_value});
 	}
-	var service_value_price = price_value;
-
-	if (store_info["rating"] == "?") {
-		rating_value = 0.5;
-	} else {
-		rating_value = store_info["rating"] * 2 / 10;
+	if (rating_value != null) {
+		chart1_data.push({axis:"rating", value: rating_value});
 	}
-	var service_value_rating = rating_value;
-
-	if (store_info["open_hour_detail"] == "?") {
-		openhour_value = 0.5;
-	} else {
-		if (store_info["open_hour_detail"].length == 1) {
-			openhour_value = 1;
-		} else {
-			var total_hour = 0;
-		   	for (i = 0; i < store_info["open_hour_detail"].length; i++) {
-		   		var close_hour = store_info["open_hour_detail"][i]["close"]["hours"];
-		   		if (close_hour == 0) {
-		   			close_hour = 24;
-		   		}
-		   		var open_hour = store_info["open_hour_detail"][i]["open"]["hours"];
-		   		var open_period = close_hour - open_hour;
-		   		total_hour += open_period;
-		   	openhour_value = total_hour / 168;
-		   	}
-		}
+	if (openhour_value != null) {
+		chart1_data.push({axis:"open hour", value: openhour_value});
+	}	
+	if (distance_value != null) {
+		chart1_data.push({axis:"distance", value: distance_value});
 	}
-	service_value = 0.2 * service_value_price + 0.8 * service_value_rating;
+	if (service_value != null) {
+		chart1_data.push({axis:"service", value: service_value});
+	}
+	if (final_freshness != null) {
+		freshness_value = 0.2 * rating_value + 0.2 * openhour_value + 0.6 * final_freshness;
+		chart1_data.push({axis:"freshness", value: freshness_value});
+	}
 
+	var chart_data = [
+		chart1_data
+	];
 
 	var colorscale = d3.scale.category10();
-	var LegendOptions = [store_info["name"]];
-	var d = [
-		[
-		{axis:"price", value:price_value},
-		{axis:"rating", value:rating_value},
-		{axis:"freshness", value:0.5},
-		{axis:"open hour", value:openhour_value},
-		{axis:"distance", value:0.5},
-		{axis:"service", value:service_value}
-		]
-	];
+	var LegendOptions = [];
+
+	var w = 270,
+		h = 270;
 
 	//Options for the Radar chart, other than default
 	var mycfg = {
-	  w: 270,
-	  h: 270,
-	  maxValue: 1.0,
+	  w: w,
+	  h: h,
+	  maxValue: 1.2,
 	  levels: 5,
 	  ExtraWidthX: 120
 	}
 
 	//Call function to draw the Radar chart
 	//Will expect that data is in %'s
-	RadarChart.draw("#radar-chart-bi", d, mycfg);
+	RadarChart.draw("#radar-chart-bi", chart_data, mycfg);
 
 	//Initiate legend
 	var svg = d3.select('#body')

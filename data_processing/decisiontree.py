@@ -1,5 +1,6 @@
 #!usr/bin/env python #_dicisiontree.py
 import math
+import copy
 
 # open file, read data into a list
 file = open('weather_data_for_training.csv','r')
@@ -61,8 +62,7 @@ def group_on_attribute(attribute, list_of_dictionaries):
 
 def calculate_information_gain(target_attribute, split_attribute, list_of_dictionaries):
     # information gain = entropy(parent) – [average entropy(children)]
-    # use the entropy function to calculate entropy of current list of dictionaries
-    # using the target attribute
+    # use the entropy function to calculate entropy of current list of dictionaries for the target attribute
     # use the group_on_attribute to split the list of dictionaries into the children
     # calculate the entropy of each of the children and take the average
     parent_entropy = entropy(target_attribute, list_of_dictionaries)
@@ -100,34 +100,73 @@ def find_best_split_attribute(target_attribute, list_of_dictionaries):
 
 class DecisionTreeNode(object):
 	# build decision tree node and train
-	def __init__(self, target_attribute, list_of_dictionaries):	
-		value = list()
-		for dictionary in list_of_dictionaries:
-			if dictionary[target_attribute] not in value:
-				value.append(dictionary[target_attribute])
-		if len(value) == 1:
-			self.value = value[0]
-			return
-		else:
-			self.best_split_attribute = find_best_split_attribute(target_attribute, list_of_dictionaries)
-			self.value = None
-		
-		self.child_dictionary = dict()
-		new_grouped_dictionaries = group_on_attribute(self.best_split_attribute, list_of_dictionaries)
-		for group in new_grouped_dictionaries:
-			node = DecisionTreeNode(target_attribute, group)
-			attribute_value = group[0][self.best_split_attribute]
-			self.child_dictionary[str(attribute_value)] = node
+    def __init__(self, target_attribute, list_of_dictionaries):
+        self.attribute = None
+        self.children = dict()
+        self.decision = None
+        
+        possible_values = []
+        for dictionary in list_of_dictionaries:
+            value = dictionary[target_attribute]
+            if value not in possible_values:
+                possible_values.append(value)
+                
+        if len(possible_values) == 1:
+            self.decision = possible_values[0]
+            return
+        else:
+        	self.decision = None
+        
+        split_attribute = find_best_split_attribute(target_attribute, list_of_dictionaries)
+        self.attribute = split_attribute
+        
+        split_attribute_groups = group_on_attribute(split_attribute, list_of_dictionaries)
+        for group in split_attribute_groups:
+            split_attribute_value = group[0][split_attribute]
+            self.children[split_attribute_value] = DecisionTreeNode(target_attribute, group)
+            
+    def print_tree(self, level=0):
+        if self.decision is not None:
+            print(("\t" * level) + "decision ->" + str(self.decision))
+        else:
+            print(("\t" * level) + "split on: " + str(self.attribute))
+            for child_key in self.children:
+                print(("\t" * (level + 1)) + str(child_key))
+                self.children[child_key].print_tree(level + 2)
+        
+    def add_to_list_and_get_index(self, list_of_nodes):
+    	self.index = len(list_of_nodes)
+    	list_of_nodes.append(self)
+    	
+    	for child_key in self.children:
+    		self.children[child_key].add_to_list_and_get_index(list_of_nodes)
+    		
+    def print_node_for_javascript(self):
+    	print(str(self.index) + ' \\n \\')
+    	if self.decision is not None:
+    		print("true \\n \\")
+    		print(str(self.decision) + ' \\n \\')
+    	else:
+    		print("false \\n \\")
+    		print(str(self.attribute) + ' \\n \\')
+    		print(str(len(self.children)) + ' \\n \\')
+    		for child_key in self.children:
+    			print(str(child_key) + ' \\n \\')
+    			print(str(self.children[child_key].index) + ' \\n \\')
+    		
+    def print_index(self):
+    	print(self.index)
 
-	def make_decision(self, dictionary):
-		if self.value is not None:
-			return self.value
-		else:
-			value_of_split_attribute = dictionary[self.best_split_attribute]
-			node = self.child_dictionary[str(value_of_split_attribute)]
-			return node.make_decision(dictionary)
+    def make_decision(self, dictionary):
+        if self.decision is not None:
+            return self.decision
+            
+        value_of_decision_attribute = dictionary[self.attribute]
+        return self.children[value_of_decision_attribute].make_decision(dictionary)
 
 
+
+# process the new file
 def calculateFreshness(list_of_dictionaries):
 	# update dict with value from feature functions defined as follow
 	for dictionary in list_of_dictionaries:
@@ -144,11 +183,11 @@ def calculateFreshness(list_of_dictionaries):
 			dictionary["TMAX"] = 0.0
 		else:
 			tmax = float(tmax)
-			if tmax < 50 or tmax >= 350:
+			if tmax < 50:
 				dictionary["TMAX"] = -1.0
-			elif 50 <= tmax < 150 or 250 <= tmax < 350:
+			elif 50 <= tmax < 150 or tmax >= 300:
 				dictionary["TMAX"] = 0.0
-			elif 150 <= tmax < 250:
+			elif 150 <= tmax < 300:
 				dictionary["TMAX"] = 1.0
 
 		tmin = dictionary["TMIN"]
@@ -156,11 +195,11 @@ def calculateFreshness(list_of_dictionaries):
 			dictionary["TMIN"] = 0.0
 		else:
 			tmin = float(tmin)
-			if tmin < -50 or tmin >= 250:
+			if tmin < -100:
 				dictionary["TMIN"] = -1.0
-			elif -50 <= tmin < 50 or 150 <= tmin < 250:
+			elif -100 <= tmin < 50 or tmin >= 200:
 				dictionary["TMIN"] = 0.0
-			elif 50 <= tmin < 150:
+			elif 50 <= tmin < 200:
 				dictionary["TMIN"] = 1.0
 
 		wind = dictionary["WIND"]
@@ -211,10 +250,58 @@ def calculateFreshness(list_of_dictionaries):
 
 
 training_data = calculateFreshness(list_of_dictionaries)
-decision_tree_node = DecisionTreeNode("FRESHNESS", training_data)
+nodes = []
+tree = DecisionTreeNode("FRESHNESS", training_data)
+tree.add_to_list_and_get_index(nodes)
+for node in nodes:
+	node.print_node_for_javascript()
+print(" ")
 
-#predicted_freshness = decision_tree_node.make_decision({'SNOW': -1.0, 'RAIN': 0.0, 'TMAX': -1.0, 'TMIN': -1.0, 'MONTH': -1.0, 'WIND': -1.0})
-#print(predicted_freshness)
+
+# inport test set and test on accuracy
+def getTestData(list_of_dictionaries):
+	for dictionary in list_of_dictionaries:
+		del dictionary["FRESHNESS"]
+	return list_of_dictionaries;
+
+# process test file
+file_test = open('weather_data_for_test.csv','r')
+readfile_test = file_test.read()
+file_test.close()
+readlist_test = readfile_test.split('\n')
+list_of_list_test = []
+for element in readlist_test:
+    sublist = element.split(',')
+    list_of_list_test.append(sublist)
+    
+# create a list of dictionaries for each row
+attribute_name_test = list_of_list_test[0]
+element_num_test = len(list_of_list_test) - 1
+list_of_dictionaries_test = []
+for i in range(1, element_num_test):
+    list_of_dictionaries_test.append(dict(zip(attribute_name_test, list_of_list_test[i])))
+
+# tagged test set and input test set
+test_data_tagged = calculateFreshness(list_of_dictionaries_test)
+test_data_tagged_copy = copy.deepcopy(test_data_tagged)
+test_data_input = getTestData(test_data_tagged)
+
+# accuracy
+count = 0
+num_input = len(test_data_input)
+for i in range(0, num_input):
+	prediction = tree.make_decision(test_data_input[i])
+	actual_value = test_data_tagged_copy[i]["FRESHNESS"]
+	if float(prediction) == float(actual_value):
+		count += 1
+accuracy = count / num_input * 100
+print("accuracy is: " + str(accuracy) + "%")
+
+
+
+# test area
+# predicted_freshness = tree.make_decision({'SNOW': -1.0, 'RAIN': 0.0, 'TMAX': -1.0, 'TMIN': -1.0, 'MONTH': -1.0, 'WIND': -1.0})
+# print(predicted_freshness)
 
 
 # for the weather data, define some feature functions
@@ -227,16 +314,14 @@ decision_tree_node = DecisionTreeNode("FRESHNESS", training_data)
 # TMAX (in tenth of C) = 
 #	-1 if        x < 50
 #	 0 if  50 <= x < 150
-#	+1 if 150 <= x < 250
-#	 0 if 250 <= x < 350
-#	-1 if 		 x >= 350
+#	+1 if 150 <= x < 300
+#	 0 if 		 x >= 300
 
 # TMIN (in tenth of C) = 
-# 	-1 if       x < -50
-#	 0 if -50 <= x <  50
-#	+1 if  50 <= x < 150
-# 	 0 if 150 <= x < 250
-#	-1 if        x >= 250
+# 	-1 if       x < -100
+#	 0 if -100 <= x < 50
+#	+1 if   50 <= x < 200
+# 	 0 if 		  x >= 200
 
 # WIND (km) = 
 # 	+1 if       x < 25
