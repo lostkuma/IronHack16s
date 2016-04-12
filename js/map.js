@@ -4,6 +4,7 @@ var map,
     service, 
     infowindow, 
     infowindow_center, 
+    trafficLayer, 
     directionsDisplay, 
     directionsService,
     marker_center;
@@ -19,6 +20,7 @@ var price_value,
     openhour_value,
     distance_value,
     freshness_value;
+var row;
 
 
 function initMap() {
@@ -29,6 +31,9 @@ function initMap() {
         center: pos,
         zoom: 13
     });
+
+    trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
 
     // set up info window
     infowindow = new google.maps.InfoWindow();
@@ -81,6 +86,8 @@ function searchNearByCallback(results, status) {
             var place_id = results[i].place_id;
             getPlaceDetails(place_id);
         }
+        console.log(store_info_list)
+        
     }
 }
 
@@ -176,6 +183,9 @@ function getPlaceDetailsCallback(place, status) {
                 store_info["if_open_now"] = 'No'
             }
         }
+        store_info_list.push(store_info);
+        // draw table
+        setTableContent(store_info);
         // creat marker and set click on marker event 
         // set info window and side menu content for store requested detail
         createMarkerAndDetailedInfo(place, store_info);
@@ -185,16 +195,12 @@ function getPlaceDetailsCallback(place, status) {
 }
 
 
-function setTableContent(store_info) {
+function setTableContent(store_info, distance) {
     $(document).ready(function() {
-
-        html =  "<tr>" +
-                "<td>" + store_info["name"] + "</td>" +
-                "<td>" + store_info["address"] + "</td>" +
-                "<td>" + store_info["website"] + "</td>" +
-                "</tr>";
-
-        var table_body = $(html);
+        row += "<tr><td>" + (labelIndex + 1) + "</td><td>" + store_info["name"] + "</td><td>" 
+            + store_info["address"]  + "</td><td><a target='_blank' href='" + store_info["website"] 
+            + "'>" + store_info["website"] + "</a>" + "</td></tr>";
+        $("#add-store").html(row);
     });
 }
 

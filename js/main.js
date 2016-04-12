@@ -100,7 +100,7 @@ function extractFeatures(current_weather_data) {
 	}
 
 	tmax_raw = parseFloat(tmax_raw) * 10; 
-	if (tmax_raw < 50) {
+	if (tmax_raw < 0) {
 		tmax = -1.0;
 	} else if (tmax_raw >= 150 && tmax_raw < 300) {
 		tmax = 1.0;
@@ -139,6 +139,8 @@ function extractFeatures(current_weather_data) {
 
 
 function getWeatherDataCallback(result) {
+	console.log("current weather: ");
+	console.log(result);
 	// get current weather raw
     var wind = result.list[0]["speed"];
     var tmax = result.list[0]["temp"]["max"];
@@ -156,7 +158,7 @@ function getWeatherDataCallback(result) {
     	var snow = "Y";
 	}
 
-    weather_text = weather_condition["description"];
+    weather_text = weather_condition["main"];
     weather_icon = weather_condition["icon"];
     icon_url = "http://openweathermap.org/img/w/" + weather_icon + ".png";
 
@@ -178,6 +180,7 @@ function getWeatherDataCallback(result) {
     // proceed to decision prediction when tree loaded and features extracted
     $.when(input, setupTree).then(function() {
 		freshness_by_weather =  predict(input);
+		console.log("prediction: " + freshness_by_weather);
 		
 		// import other extracted features data from datasheet
 		var freshness_by_farmersmarket = DATA_SHEET.FarmersMarket[0][month];
@@ -208,7 +211,18 @@ $.ajax({
 // load decision tree
 var setupTree = loadDecisionTree();
 
-
 startTime();
 seasonalVeggies();
+
+// trafic layer on/off
+$(document).ready(function() {
+	$("#layer-traffic").prop("checked", true);
+	$("#layer-traffic").change(function() {
+		if ($("#layer-traffic").is(":checked")) {
+			trafficLayer.setMap(map);
+		} else {
+			trafficLayer.setMap(null);
+		}
+	});
+});
 

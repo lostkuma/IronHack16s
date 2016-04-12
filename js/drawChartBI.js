@@ -35,7 +35,7 @@ function drawChart_Basic() {
 	var mycfg = {
 	  w: w,
 	  h: h,
-	  maxValue: 1.2,
+	  maxValue: 1.1,
 	  levels: 5,
 	  ExtraWidthX: 120
 	}

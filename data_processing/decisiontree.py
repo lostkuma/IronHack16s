@@ -183,9 +183,9 @@ def calculateFreshness(list_of_dictionaries):
 			dictionary["TMAX"] = 0.0
 		else:
 			tmax = float(tmax)
-			if tmax < 50:
+			if tmax < 0:
 				dictionary["TMAX"] = -1.0
-			elif 50 <= tmax < 150 or tmax >= 300:
+			elif 0 <= tmax < 150 or tmax >= 300:
 				dictionary["TMAX"] = 0.0
 			elif 150 <= tmax < 300:
 				dictionary["TMAX"] = 1.0
@@ -312,8 +312,8 @@ print("accuracy is: " + str(accuracy) + "%")
 #	 0 if N
 
 # TMAX (in tenth of C) = 
-#	-1 if        x < 50
-#	 0 if  50 <= x < 150
+#	-1 if        x < 0
+#	 0 if   0 <= x < 150
 #	+1 if 150 <= x < 300
 #	 0 if 		 x >= 300
 
