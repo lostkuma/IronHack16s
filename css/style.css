@@ -14,13 +14,9 @@ html {
 
 @media(min-width:768px) {
     .navbar {
-        padding: 20px 0;
         -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
         transition: background .5s ease-in-out,padding .5s ease-in-out;
-    }
-    .top-nav-collapse {
-        padding: 0;
     }
     .multi {
 	column-count:3;
@@ -81,7 +77,6 @@ html {
     }
 }
 
-
 #current-date {
 	position: absolute;
 	font-size: 16px;
@@ -105,7 +100,7 @@ html {
 	position: absolute;
 	margin-top: 0px;
 	margin-right: 5px;
-	right: 10px;
+	right: 0px;
 }
 
 .navbar-icon {
@@ -116,11 +111,8 @@ html {
 	max-width: 50px;
 }
 
-#weather-icon {
-	position: absolute;
-	margin-top: 0px;
-	margin-right: 10px;
-	right: 0px;
+#myNavbar li.active{
+	color: #fff;
 }
 
 #map{
@@ -139,7 +131,7 @@ html {
 	height: 88%;
 	width: 45%;
 	padding: 5px 13px;
-	overflow: scroll;
+	overflow: hidden;
 	margin-bottom: 10px;
 	margin-top: 15px;
 }
@@ -150,7 +142,7 @@ html {
 	background-color: #eee;
 	font-size: 14px;
 	overflow: scroll;
-	text-align: center;
+	text-align: left;
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
 	}
@@ -161,6 +153,16 @@ html {
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
 	background-color: #dbdbdb;
+}
+
+#basic p {
+	margin: 0px;
+}
+
+#store-image {
+	float: right;
+	margin-right: 20px;
+	display: block;
 }
 
 .intro-section {
@@ -231,12 +233,4 @@ html {
 	z-index: 1;
 	left: 115px;
 	margin-top: 23.5px;
-}
-
-.nav-pills li {
-	border-style: none;
-	border-width: 0px;
-	border-top-right-radius: 0px;
-	border-top-left-radius: 0px;
-	background-color: white;
 }

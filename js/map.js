@@ -85,9 +85,10 @@ function searchNearByCallback(results, status) {
         for (var i = 0; i < results.length; i++) {
             var place_id = results[i].place_id;
             getPlaceDetails(place_id);
+            console.log("results " + i + " is: ")
+            console.log(results[i])
         }
         console.log(store_info_list)
-        
     }
 }
 
@@ -100,6 +101,10 @@ function createMarkerAndDetailedInfo(place, store_info) {
         position: place.geometry.location,
         animation:  google.maps.Animation.DROP
     });
+    var photos = place.photos;
+    if (!photos) {
+        var photo;
+    }
 
     // click marker trigger event
     google.maps.event.addListener(marker, 'click', function() {  
@@ -110,6 +115,12 @@ function createMarkerAndDetailedInfo(place, store_info) {
         infowindow.open(map, this);
         // replace with store name and detailed info in side menu 
         setSideMenu(store_info);
+        // set store photo
+        if (photos != null) {
+            document.getElementById("store-image").src = photos[0].getUrl({'maxWidth': 250, 'maxHeight': 200});
+        } else {
+            document.getElementById("store-image").src = "image/not_available.png"
+        }
         // get the route from current position to marker
         calculateAndDisplayRoute(directionsService, directionsDisplay, place);
         getDistance(pos, place.geometry.location);

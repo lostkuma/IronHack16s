@@ -19,7 +19,7 @@
 	$(document).ready(function() {
 		$('#fullpage').fullpage({
 			anchors: ["intro-page", "app-page", "directory-page"],
-			loopBottom: true
+			loopBottom: true,
 		});
 	});  
   </script>
@@ -59,19 +59,19 @@
 
 
   <div id="fullpage">
-  <!-- Intro section -->
+    <!-- Intro section -->
 	<div class="section">
-    	<div class="intro-section">
-	      <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <h1>Find My Veggies</h1>
-                <h3>Don't know where to find fresher and cheaper veggies?<br>
+      <div class="intro-section">
+	    <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1>Find My Veggies</h1>
+              <h3>Don't know where to find fresher and cheaper veggies?<br>
                 This app will tell you grocery stores near you and more!</h3>
-                <a class="btn btn-primary btn-lg" href="#app-page">Try it now</a>
-              </div>
+              <a class="btn btn-primary btn-lg" href="#app-page">Try it now</a>
             </div>
-	   	  </div>
+          </div>
+	   	</div>
 	  </div>
 	</div>
 
@@ -104,12 +104,14 @@
 			  <!-- tab content for basic -->
 			  <div id="basic" class="tab-pane fade in active">
 				<div id="menu-cover">
+				  <img id="store-image">
 				  <h4 id="store-name">Click on markers to see store info</h4>
 				    <div class="basic-info">
+				      <p><a id="store-website"></a></p>
 				      <p id="store-phone"></p>
-			      	  <p><a id="store-website"></a></p>
 			      	  <p id="open-hour-today"></p>
 			      	  <p id="store-rating"></p>
+			      	  <p><br></p>
 			      	  <button class="btn btn-primary btn-sm" type="button" id="get-direction">Get Direction</button>
 					</div>
 					<div class="radar-chart">
