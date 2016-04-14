@@ -85,10 +85,7 @@ function searchNearByCallback(results, status) {
         for (var i = 0; i < results.length; i++) {
             var place_id = results[i].place_id;
             getPlaceDetails(place_id);
-            console.log("results " + i + " is: ")
-            console.log(results[i])
         }
-        console.log(store_info_list)
     }
 }
 
@@ -108,6 +105,9 @@ function createMarkerAndDetailedInfo(place, store_info) {
 
     // click marker trigger event
     google.maps.event.addListener(marker, 'click', function() {  
+        // get the route from current position to marker
+        calculateAndDisplayRoute(directionsService, directionsDisplay, place);
+        getDistance(pos, place.geometry.location);
         // add place name, if open now, place address, open in map to info window
         google_map_link = '<a target="_blank" href=' + store_info["map_url"] + '>View on Google Maps</a>'
         infowindow.setContent('<div><strong>' + store_info["name"] + '  ' + '(Open now: ' 
@@ -121,9 +121,6 @@ function createMarkerAndDetailedInfo(place, store_info) {
         } else {
             document.getElementById("store-image").src = "image/not_available.png"
         }
-        // get the route from current position to marker
-        calculateAndDisplayRoute(directionsService, directionsDisplay, place);
-        getDistance(pos, place.geometry.location);
         // set radar chart value
         price_value = null;
         rating_value = null;
@@ -132,8 +129,8 @@ function createMarkerAndDetailedInfo(place, store_info) {
         distance_value = null;
         freshness_value = null;
         setChartData1(store_info);
-        drawChart_Basic();
-        drawChart_Compare();
+        var chart_data = makeChartData();
+        AsterChart(chart_data);
         
         $(document).ready(function() {
             // display radar chart
@@ -250,8 +247,8 @@ function getDistanceCallback(response, status) {
         distance = response.rows[0]["elements"][0]["distance"]["text"]
         duration = response.rows[0]["elements"][0]["duration"]["text"]
         setChartData2(distance);
-        drawChart_Basic();
-        drawChart_Compare();
+        var chart_data = makeChartData();
+        AsterChart(chart_data);
     }
 }
 
@@ -273,13 +270,13 @@ function setSideMenu(store_info) {
     document.getElementById("store-name").innerHTML = store_info["name"];
     // store tel
     if (store_info["phone"] != "?") {
-        document.getElementById("store-phone").innerHTML = store_info["phone"];
+        document.getElementById("store-phone").innerHTML = "<strong>Tel: </strong>" + store_info["phone"];
     } else {
         document.getElementById("store-phone").innerHTML = "";        
     }
     // store site
     if (store_info["website"] != "?") {
-        document.getElementById("store-website").innerHTML = "Go to store website";
+        document.getElementById("store-website").innerHTML = "<strong>Go to store website</strong>";
         document.getElementById("store-website").href = store_info["website"]
         document.getElementById("store-website").target = "_blank";
     } else {
@@ -299,9 +296,9 @@ function setSideMenu(store_info) {
         var regex = /\d+:\d\d\s\w\w\s-\s\d+:\d\d\s\w\w/g;
         var match = regex.exec(hour_today);
         if (match == null) {
-            document.getElementById("open-hour-today").innerHTML = "Open 24 hours";
+            document.getElementById("open-hour-today").innerHTML = "<strong>Hours: </strong>Open 24 hours";
         } else {
-            document.getElementById("open-hour-today").innerHTML = "Open today: " + match[0]
+            document.getElementById("open-hour-today").innerHTML = "<strong>Open today: </strong>" + match[0]
         }
     } else {
         document.getElementById("open-hour-today").innerHTML = "";
@@ -310,7 +307,7 @@ function setSideMenu(store_info) {
     if (store_info["rating"] != "?") {
         var stars = parseFloat(store_info["rating"]);
         var image_location = storeRating(stars);
-        document.getElementById("store-rating").innerHTML = "Customer rating: " + stars + " <img src=" + image_location 
+        document.getElementById("store-rating").innerHTML = "<strong>Customer rating: </strong>" + stars + " <img src=" + image_location 
                                                         + "><br>Based on " + store_info["user_ratings_total"] + " reviews";
     } else {
         document.getElementById("store-rating").innerHTML = "";  
@@ -380,7 +377,7 @@ function setChartData2(distance) {
         distance_value == 0.5;
     } else {
         distance_value = match[1];
-        distance_value = distance_value / 5;
+        distance_value = distance_value / 6;
     }
 }
 
