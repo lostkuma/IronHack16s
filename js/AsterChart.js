@@ -17,7 +17,7 @@ function makeChartData() {
       data.push({"id": "Fre", "order": 1, "score": freshness_value, "weight": 1, "color": "#C7E89E", "label": "Freshness"});
     }
     if (openhour_value != null) {
-      data.push({"id": "OpH", "order": 1, "score": openhour_value, "weight": 1, "color": "#4D9DB4", "label": "Open Hours"});
+      data.push({"id": "OpH", "order": 1, "score": openhour_value, "weight": 1, "color": "#4D9DB4", "label": "Open Hour"});
     } 
     if (distance_value != null) {
       distance_value = 1 - distance_value;
@@ -61,7 +61,7 @@ function AsterChart(data) {
   d3.select(chart_id).select("svg").remove();
 
   var svgout = d3.select(chart_id).append("svg")
-    .attr("width", width+200)
+    .attr("width", width + 180)
     .attr("height", height);
 
   var svg = svgout
@@ -172,17 +172,41 @@ function AsterChart(data) {
       legend.append("rect")
       .attr("width", 18)
       .attr("height", 18)
-      .attr("x", 50)
-      .attr("y", 20)
+      .attr("x", 40)
+      .attr("y", 160)
       .style("filter" , "url(#glow)")
       .style("fill", function(d) { return fill(d); });
 
       // draw legend text
       legend.append("text")
-      .attr("y", 29)
+      .attr("y", 169)
       .attr("dx", 72)
       .attr("dy", ".35em")
       .style("text-anchor", "left")
       .text(function(d) { return d;})
+
+  function wrap(text, width) {
+    text.each(function() {
+      var text = d3.select(this),
+          words = text.text().split(/\s+/).reverse(),
+          word,
+          line = [],
+          lineNumber = 0,
+          lineHeight = 1.1, // ems
+          y = text.attr("y"),
+          dy = parseFloat(text.attr("dy")),
+          tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+      while (word = words.pop()) {
+        line.push(word);
+        tspan.text(line.join(" "));
+        if (tspan.node().getComputedTextLength() > width) {
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [word];
+          tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+        }
+      }
+    });
+  }
 
 }

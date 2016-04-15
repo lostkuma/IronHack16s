@@ -24,11 +24,24 @@ html {
 	-webkit-column-count: 3;
 	}
 	#menu-cover {
-	width: 93%;
+	width: 94%;
 	height: 89%;
+	overflow: scroll;
 	}
 	.intro-section {
     	padding-top: 24%;
+    }
+    #temp-day-sm {
+    	display: none;
+    }
+    #temp-night-sm {
+    	display: none;
+    }
+    #wind-speed-sm {
+    	display: none;
+    }
+    #humid-text-sm {
+    	display: none;
     }
 }
 
@@ -54,6 +67,30 @@ html {
 	width: 92%;
 	height: 77%;
 	}
+	#tab-veggies {
+		display: none;
+	}
+	#img-temp {
+		display: none
+	}
+	#temp-day {
+		display: none;
+	}
+	#temp-night {
+		display: none;
+	}
+	#wind-speed {
+		display: none;
+	}
+	#humid-text {
+		display: none;
+	}
+	#power-gauge1 {
+		display: none;
+	}
+	#power-gauge2 {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 1000px) {
@@ -62,12 +99,26 @@ html {
 		-moz-column-count:2;
 		-webkit-column-count: 2;
 	}
+		#tab-directory {
+		display: none;
+	}
+	.two-column {
+	column-count:1;
+	-moz-column-count:1;
+	-webkit-column-count: 1;
+	}
 }
 
 @media screen and (min-width: 1000px) {
 	#menu-cover {
-		width: 95%;
+		width: 95.5%;
 		height: 92%;
+	}
+	.two-column {
+	column-count:2;
+	-moz-column-count:2;
+	-webkit-column-count: 2;
+	margin-top: 40px
 	}
 }
 
@@ -82,9 +133,10 @@ html {
 	font-size: 16px;
 	margin-top: 14px;
 	margin-left: 51%;
-	margin-right: 60px;
+	margin-right: 40px;
 	right: 65px;
 	color: white;
+	text-align: right;
 }
 
 #current-weather {
@@ -92,8 +144,9 @@ html {
 	font-size: 16px;
 	margin-top: 14px;
 	right: 15px;
-	margin-right:45px;
+	margin-right:30px;
 	color: white;
+	text-align: right;
 }
 
 #weather-icon {
@@ -118,8 +171,8 @@ html {
 #map{
 	position: absolute;
     height: 88%;
-    width: 55%;
-    left: 10px;
+    width: 50.5%;
+    left: 15px;
     overflow: hidden;
     margin-bottom: 10px;
     margin-top: 15px;
@@ -128,16 +181,17 @@ html {
 
 .side-menu{
 	position: absolute;
-	left: 55.5%;
-	height: 88%;
-	width: 45%;
+	left: 51.8%;
+	height: 88.5%;
+	width: 48.5%;
 	padding: 5px 13px;
 	overflow: hidden;
 	margin-bottom: 10px;
-	margin-top: 15px;
+	margin-top: 10px;
 }
 
 #menu-cover {
+	height: 90%;
 	position: absolute;
 	padding: 15px 25px 15px;
 	background-color: #eee;
@@ -156,13 +210,62 @@ html {
 	background-color: #dbdbdb;
 }
 
+#img-temp {
+	max-width: 100%;
+	max-height: 100%;
+	margin-bottom: 20px
+}
+
+.temp-daily {
+	text-align: center;
+	padding: 10px;
+}
+
+#temp-day {
+	position: absolute;
+	margin-right: 50%;
+	left: 24.5%;
+	top: 11%;
+	text-shadow: 2.5px 1.5px #f6f6f6;
+}
+
+#temp-night {
+	position: absolute;
+	margin-left: 50%;
+	right: 24.5%;
+	top: 11%;
+	color: white;
+	text-shadow: 2.5px 1.5px gray;
+}
+
+#temp-day-sm {
+	text-align: left;
+}
+
+#temp-night-sm {
+	text-align: left;
+}
+
+#wind-speed-sm {
+	text-align: left;
+}
+
+#humid-text-sm {
+	text-align: left;
+}
+
 #basic p {
 	margin: 0px;
 }
 
+.basic-info {
+	margin-bottom: 10px;
+}
+
 #store-image {
 	float: right;
-	margin-left: 15px;
+	margin-left: 5px;
+	margin-right: 10px;
 }
 
 .intro-section {
@@ -176,62 +279,45 @@ html {
     padding-top: 54px;
 }
 
-.store-section {
-    height: 100%;
-    padding-top: 10%;
-    padding-bottom: 10%;
-    text-align: center;
-}
-
-
 .intro-section h1, h3 {
 	text-shadow: 2.5px 1.5px #f6f6f6;
 }
 
-.radar-chart {
-	padding-top: 30px;
+.aster-chart {
+	position: relative;
+	padding-top: 20px;
+	text-align: center;
 	visibility: hidden;
 }
 
-#radar-chart-bi {
+#aster-chart {
 	position: relative;
-	top: 10px;
-	left: -53px;
-}
-
-#radar-chart-cs {
-	position: relative;
-	top: 10px;
-	left: -53px;
+	top: 20px;
 }
 
 #get-direction {
 	visibility: hidden;
 }
 
-.store-section h1 {
-	text-shadow: 2.5px 1.5px #f6f6f6;
+#store-directory {
+	margin-top: 20px;
 }
 
-.store-section th {
+#store-directory th {
 	text-align: center;
 }
 
-.store-section thead {
+#store-directory thead {
 	background-color: white;
+	opacity: 0.7;
 }
 
-.store-section tbody {
-	background-color: #ffffe6;
-	opacity: 0.8;
-	color: black;
-}
 
 .map-layer {
 	position: absolute;
 	float: left;
 	z-index: 1;
-	left: 115px;
+	left: 120px;
 	margin-top: 23.5px;
 }
 
@@ -273,4 +359,49 @@ html {
 .solidArc:hover {
   fill: orangered;
   opacity: 0.8;
+}
+
+form {
+  position: relative;
+  left: 10px;
+  top: 20px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar-graph {
+	visibility: hidden;
+}
+
+#bar-graph-compare {
+	text-align: center;
+}
+
+#bar-reset {
+	margin-bottom: 50px;
+}
+
+#power-gauge g.arc {
+	fill: steelblue;
+}
+
+#power-gauge g.pointer {
+	fill: #e85116;
+	stroke: #b64011;
+}
+
+#power-gauge g.label text {
+	text-anchor: middle;
+	font-size: 14px;
+	font-weight: bold;
+	fill: #666;
+}
+
+#veggie-text-align {
+	text-align: center;
 }

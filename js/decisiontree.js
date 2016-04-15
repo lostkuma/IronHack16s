@@ -1108,7 +1108,7 @@ function loadDecisionTree() {
 //	+1 if   50 <= x < 200
 // 	 0 if 		  x >= 200
 
-// WIND (km) = 
+// WIND (km/h) = 
 // 	+1 if       x < 25
 //	 0 if 25 <= x < 50
 //	-1 if       x >= 50

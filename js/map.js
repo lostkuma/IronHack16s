@@ -9,7 +9,6 @@ var map,
     directionsService,
     marker_center;
 var store_info_click = [];
-var store_info_list = [];
 var labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
 var labelIndex = 0;
 var distance, duration;
@@ -104,10 +103,12 @@ function createMarkerAndDetailedInfo(place, store_info) {
     }
 
     // click marker trigger event
-    google.maps.event.addListener(marker, 'click', function() {  
+    google.maps.event.addListener(marker, 'click', function() { 
+        
         // get the route from current position to marker
         calculateAndDisplayRoute(directionsService, directionsDisplay, place);
-        getDistance(pos, place.geometry.location);
+        getDistance(pos, place.geometry.location);  
+
         // add place name, if open now, place address, open in map to info window
         google_map_link = '<a target="_blank" href=' + store_info["map_url"] + '>View on Google Maps</a>'
         infowindow.setContent('<div><strong>' + store_info["name"] + '  ' + '(Open now: ' 
@@ -117,7 +118,7 @@ function createMarkerAndDetailedInfo(place, store_info) {
         setSideMenu(store_info);
         // set store photo
         if (photos != null) {
-            document.getElementById("store-image").src = photos[0].getUrl({'maxWidth': 250, 'maxHeight': 200});
+            document.getElementById("store-image").src = photos[0].getUrl({'maxWidth': 230, 'maxHeight': 150});
         } else {
             document.getElementById("store-image").src = "image/not_available.png"
         }
@@ -133,8 +134,29 @@ function createMarkerAndDetailedInfo(place, store_info) {
         AsterChart(chart_data);
         
         $(document).ready(function() {
-            // display radar chart
-            $(".radar-chart").css('visibility','visible');
+            // tab event
+            var currentTab = $('.nav-tabs .active').text();
+            if (currentTab == "Compare Stores") {
+                $(".bar-graph").css("visibility", "visible");
+                var current_index = marker.label;
+                store_info["index"] = current_index;
+
+                // collect three recent clicked stores
+                if (store_info_click.indexOf(store_info) < 0) {
+                    store_info_click.push(store_info);
+                    if (store_info_click.length > 3) {
+                        store_info_click.shift();
+                    }
+                }
+                setBarData(store_info_click);
+                var bar_data = makeBarData();
+                barGraph(bar_data);
+            } 
+            if (currentTab != "Compare Stores") {
+                $('#customize-tag a[href="#basic"]').tab('show');
+            }
+            // display aster chart
+            $(".aster-chart").css('visibility','visible');
             // display direction button
             $("#get-direction").css('visibility', 'visible');
             // display directions on click
@@ -148,8 +170,6 @@ function createMarkerAndDetailedInfo(place, store_info) {
             directionsDisplay.setMap(null);
             infowindow_center.setContent("You are here!")
         });
-
-        store_info_click.push(store_info);
     });
 }
 
@@ -191,7 +211,6 @@ function getPlaceDetailsCallback(place, status) {
                 store_info["if_open_now"] = 'No'
             }
         }
-        store_info_list.push(store_info);
         // draw table
         setTableContent(store_info);
         // creat marker and set click on marker event 
@@ -205,8 +224,8 @@ function getPlaceDetailsCallback(place, status) {
 
 function setTableContent(store_info, distance) {
     $(document).ready(function() {
-        row += "<tr><td>" + (labelIndex + 1) + "</td><td>" + store_info["name"] + "</td><td>" 
-            + store_info["address"]  + "</td><td><a target='_blank' href='" + store_info["website"] 
+        row += "<tr><td>" + (labelIndex + 1) + "</td><td>" + store_info["name"] + 
+            "</td><td><a target='_blank' href='" + store_info["website"] 
             + "'>" + store_info["website"] + "</a>" + "</td></tr>";
         $("#add-store").html(row);
     });
