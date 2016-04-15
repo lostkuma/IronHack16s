@@ -1,4 +1,4 @@
-**Find My Veggies** v1.1.0 - 2016-04-07  
+**Find My Veggies** v1.2.0 - 2016-04-14   
 
 * **Note for chrome users! Firefox and Safari can skip this**  
 	**The page needs to be ran on a local server or real server!**  
@@ -69,28 +69,40 @@ Those features include but not limited to: freshness, price, open hours, distanc
 	* Nearby stores will be displayed after centering with drop pin
 	* Click on marker
 		* Info window displays store name, address, link to google map  
-		* Side menu displays detailed information  
-		* Side menu has button "Get Direction", click on button  
+		* Side menu tab basic information displays detailed information  
+		* Tabs are initialized at Weather, if tabs not at "Basic" or "Compare" when click on markers, it will automatically switch to "Basic" tab  
+		* Side menu "Basic" has button "Get Direction", click on button  
 			* displays driving route  
 			* info window displays distance and travel time  
 	
-* Data Visualization
-	* Radar chart for single store's features
-	* side menu tab 1 - basic info
+* Data Visualization  
+	* Current traffic condition directly displayed on map  
+	* Day and night weather displayed with numbers on images  
+	* Wind speed and direction, humidity displayed with gauges  
+	* Aster chart with labels for single store's features  
+	* Stacked to grouped Bar Graph for three stores comparison  
+	* side menu tab 1 - Current weather  
+		* show today's day and night temperature  
+		* show today's wind speed and direction, and humidity  
+	* side menu tab 2 - Basic info
 		* name, phone, website, today's open hour and rating if the store have them  
-		* radar chart for detailed features  
-	* side menu tab 2 - compare stores (need further edition)  
-		* compare three stores information with radar chart  
-		* features of the stores are displayed for choices  
-	* side menu tab 3 - seasonal vegetable chart  
+		* aster chart with overall points and labels for detailed features  
+		* hover over aster chart colors show info window with points  
+	* side menu tab 3 - Compare stores  
+		* compare recent added three stores information with bar chart with labels  
+		* reset button to reset the compared data  
+		* can choose grouped data or stacked data for better comparison   
+	* side menu tab 4 - Seasonal vegetable chart  
 		* seasonal vegetables for this month are displayed  
+	* side menu tab 5 - Store directory  
+		* The list of search results of stores  
 
 * Interation Form:  
-	* Information output: store links and link to google maps, google map place details output for each store. Store directory on the third page    
-	* Operation option: switch between tabs, turn on/off features, current date, time and weather displayed on top right and will disappear if browser window gets small. App starts with a cover which can scroll down with animation when clicking on buttons and navigation bar on top  
-	* Information input: click to get direction, turn on/off features for comparison of stores  
-	* Interaction with map: click on markers, info window displays, get directions  
-	* Interaction with data visualization: Store directory link to website, checkboxes enable/disable features for comparison which will change the data displayed  
+	* Information output: store links and link to google maps, google map place details output, directions, distance, and travel time for each store. Store directory tab to show detailed information    
+	* Operation option: switch between different tabs, change store compare display methods. App starts with a cover which can scroll down with animation when clicking on buttons and navigation bar on top, and can scroll back up to home with full pages  
+	* Information input: choose which stores information to be displayed and directly out of the map  
+	* Interaction with map: turn on/off traffic layers, click on markers, info window displays, get directions  
+	* Interaction with data visualization: Hover over the aster chart, detailed info window will display, store directory link to website, change display methods of the bar chart to show either grouped data or stacked data   
 
 **Content**  
 * README.txt  --This file.  
@@ -98,17 +110,17 @@ Those features include but not limited to: freshness, price, open hours, distanc
 * image  --A directory contains all images used in the website  
 * css  --A directory contains all css files  
 * js  --A directory contains all the javescript files  
+	* Asterchart.js --Function to draw aster chart  
+	* barGraph.js --Function to draw bar graph  
+	* Gauge.js --Function to draw the gauges  
 	* datasheet.js --Processed data. Everything is scaled to a 1 to 10 scale  
-	* drawChartBI.js --Script for radar chart on basic info tab  
-	* drawChartCS.js --Script for radar chart on compare stores tab  
 	* main.js --Script for functions other than map  
 	* map.js --Script for Google map and related functions  
-	* radarChart.js --Radar chart initializing  
 	* decisiontree.js --Decision tree in javascript
 	* veggies.js --Constants for monthly vegetables  
 	* bootstrap.min.js --Bootstrap  
 	* jquery.easing.min.js --Multiple easing option script for scrolling effect  
-	* scrolling-nav.js --Scrolling effect of the page  
+	* jquery.fullPage.js --For the page scrolling effect  
 * data_processing --A directory with all data and data processing scripts used  
 	* decisiontree.py --Python file for process decisiontree using weather data  
 	* processdata.py --Python file for processing and scaling raw data  
@@ -123,7 +135,7 @@ Those features include but not limited to: freshness, price, open hours, distanc
 The project only uses HTML/CSS/Javascript. Python was used for data training and transforming, however, the results are printed out and pasted to a javascrpt file to be able to access easier for javascript further calculation.  
 
 **Test**  
-The App is test in Chrome, Firefox and Safari. The Geolocation function which request the browser's location has to be ran on a local/real server on Chrome to be able to functioning since Chrome seems to block something.  
+The App is test in Chrome, Firefox and Safari. The Geolocation function which request the browser's location has to be ran on a local/real server on Chrome to be able to functioning since Chrome seems to block something. The hover on aster chart function doesn't seem to work on firefox, and firefox does something weird with drawing the chart with d3.  
 
 **Additional information**  
 The decision tree prediction method might not be super well defined, and the dataset for training is probably not big enough for getting a super good result sometimes. Opendata sets data processing, especially the weather data, need to be well understood and defined if to be used in practical application development.  
@@ -133,6 +145,10 @@ The mendatory data set climate online data only contains old data, which is not 
 The goal of this project, finding fresh and cheap vegetables, is actually very vague due to the definition of freshness. Nowadays, most of the vegetables can be grown in greenhouses and can get on markets all seasons, so freshness.... is just very hard to define. If to follow the old traditions, we won't be able to get anything other than potatos and stuff in winter.... If freshness have to be defined, it should have something to do with the store's stocking time, and how well they keep their products (for example, if they water them, under what temperature, etc.). However, most stores won't release these information online (not necessary, every store have their own expert; or for small stores, they just keep things based on common sense), unless one find a job at like Walmart, but even then, they use machine to control everything.... Even there is a way to access all ussful information, we are going to need an expert in biology to tell us what exactly will a condition affect the freshness of vegetables...
 
 **^ Please ignore all my random imaginations and complains unless you also go after the reasonings behind things like a mad scientist...**  
+
+**Some ideas about the opendata set and goal for this project:**  
+So during the process of looking up open datasets online, I found that most of the datasets, at least for those related to agricalture, ecosystem, climate, ocean, business, and consumer are at the state level, some datasets of more specific information will mostly stop at the county level. So in order to make better use of these datasets online, the goal of this kind of project will be better if adjusted to the state level but not too locally defined.... For example, there are very detailed datasets for natrual disasters about on what day and time a disaters happened at a certain location, and we can get very detailed climate, ecosystem, and ocean data. So known the method of prediction (such as machine learning algorithms), one can combine these very detailed information and train a claasifier to predict the likelihood of future disasters. Furthermore, if the algorithm is well-defined, it is not impossible to predict the likelihood of future disasters on a specific date and location <-- However this requires large amount of accurate data.  
+So one thing about the goal of the project in the future requires the person who defines the problem space to know more about open datasets, and think what can be actually done with the Climate Data Online sets alone with other datasets out there.  
 
 I will thank my boyfriend Jason Macnak, a former Purdue graduate and a software engineer at Google, for all the mental supports during this project, as well as teaching me all the basics of programming languages patiently for the past couple months...  
 

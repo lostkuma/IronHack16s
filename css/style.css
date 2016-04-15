@@ -24,7 +24,7 @@ html {
 	-webkit-column-count: 3;
 	}
 	#menu-cover {
-	width: 94%;
+	width: 94.7%;
 	height: 89%;
 	overflow: scroll;
 	}
@@ -43,6 +43,22 @@ html {
     #humid-text-sm {
     	display: none;
     }
+    #temp-day {
+		position: absolute;
+		margin-right: 50%;
+		left: 24.5%;
+		top: 11%;
+		text-shadow: 2.5px 1.5px #f6f6f6;
+	}
+
+	#temp-night {
+		position: absolute;
+		margin-left: 50%;
+		right: 24.5%;
+		top: 11%;
+		color: white;
+		text-shadow: 2.5px 1.5px gray;
+	}
 }
 
 @media screen and (max-width: 767px) {
@@ -99,7 +115,7 @@ html {
 		-moz-column-count:2;
 		-webkit-column-count: 2;
 	}
-		#tab-directory {
+	#tab-directory {
 		display: none;
 	}
 	.two-column {
@@ -109,23 +125,44 @@ html {
 	}
 }
 
-@media screen and (min-width: 1000px) {
-	#menu-cover {
-		width: 95.5%;
-		height: 92%;
-	}
+@media screen and (min-width: 1001px) {
 	.two-column {
 	column-count:2;
 	-moz-column-count:2;
 	-webkit-column-count: 2;
 	margin-top: 40px
 	}
+	#menu-cover {
+		width: 95%;
+		height: 89%;
+	}
 }
 
 @media screen and (min-width: 1200px) {
-		.intro-section {
+	.intro-section {
     	padding-top: 21%;
     }
+    #menu-cover {
+		width: 96.8%;
+		height: 95%;
+		overflow: scroll;
+	}
+	#temp-day {
+		position: absolute;
+		margin-right: 50%;
+		left: 31.5%;
+		top: 11%;
+		text-shadow: 2.5px 1.5px #f6f6f6;
+	}
+
+	#temp-night {
+		position: absolute;
+		margin-left: 50%;
+		right: 31.5%;
+		top: 11%;
+		color: white;
+		text-shadow: 2.5px 1.5px gray;
+	}
 }
 
 #current-date {
@@ -183,7 +220,7 @@ html {
 	position: absolute;
 	left: 51.8%;
 	height: 88.5%;
-	width: 48.5%;
+	width: 48%;
 	padding: 5px 13px;
 	overflow: hidden;
 	margin-bottom: 10px;
@@ -219,23 +256,6 @@ html {
 .temp-daily {
 	text-align: center;
 	padding: 10px;
-}
-
-#temp-day {
-	position: absolute;
-	margin-right: 50%;
-	left: 24.5%;
-	top: 11%;
-	text-shadow: 2.5px 1.5px #f6f6f6;
-}
-
-#temp-night {
-	position: absolute;
-	margin-left: 50%;
-	right: 24.5%;
-	top: 11%;
-	color: white;
-	text-shadow: 2.5px 1.5px gray;
 }
 
 #temp-day-sm {

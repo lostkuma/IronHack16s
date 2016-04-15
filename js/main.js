@@ -55,7 +55,7 @@ return i;
 
 function seasonalVeggies() {
 	// get list of seasonal veggies for this month
-	var seasonal_veggies = []
+	var seasonal_veggies = [];
 	var veggies = VEGGIES;
 	for (var key in veggies) {
 		var seasons_of_veggie;
